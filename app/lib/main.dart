@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import './home_page/map.dart';
+import './home_page/explore.dart';
+import './home_page/about.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Katy Trail App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Katy Trail App'),
     );
   }
 }
@@ -31,7 +34,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            MapW(),
+            Explore(),
+            About(),
+          ],
+        ),
+      ),
     );
   }
 }
