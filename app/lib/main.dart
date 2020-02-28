@@ -72,12 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      // Here we take the value from the MyHomePage object that was created by
-      // the App.build method, and use it to set our appbar title.
       body: Center(
         child: AboutPage(),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        //onTap: onTabTapped, // new
+        //currentIndex: _currentIndex, // new
         currentIndex: 2,
         items: [
           BottomNavigationBarItem(
@@ -89,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
             title: new Text("Test"),
           ),
           BottomNavigationBarItem(
-            
             icon: new Icon(
               Icons.explore,
               color: Colors.grey,
