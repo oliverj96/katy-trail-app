@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import './home_page/map.dart';
-import './home_page/explore.dart';
-import './home_page/about.dart';
+import './home_page/homepage.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,14 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            MapW(),
-            Explore(),
-            About(),
-          ],
+        child: HomePage(),
         ),
-      ),
-    );
+      );
+    
   }
 }

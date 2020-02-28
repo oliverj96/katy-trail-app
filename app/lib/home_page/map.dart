@@ -5,7 +5,8 @@ class MapW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: ()=>{print("test")},
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.max,
