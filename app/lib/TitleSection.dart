@@ -5,7 +5,7 @@ class TitleSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.only(top: 10, bottom: 10),
+        margin: EdgeInsets.only(top: 15, bottom: 15),
         child: Column(
           children: <Widget>[
             Text(

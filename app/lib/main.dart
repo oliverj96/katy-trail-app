@@ -50,11 +50,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('About'),
-        actions: <Widget>[
+        leading: new IconButton(
+          alignment: Alignment.centerLeft,
+          icon: Icon(
+          Icons.keyboard_arrow_left, 
+          color: Colors.white,
+          ),
+          onPressed: () {
+            // do something
+          },
+        ),
+        actions: <Widget>[ 
           IconButton(
             icon: Icon(
-              Icons.bookmark,
-              color: Colors.white,
+            Icons.bookmark,
+            color: Colors.white,
             ),
             onPressed: () {
               // do something
@@ -68,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: AboutPage(),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: 2,
         items: [
           BottomNavigationBarItem(
             icon: new Icon(
@@ -79,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: new Text("Test"),
           ),
           BottomNavigationBarItem(
+            
             icon: new Icon(
               Icons.explore,
               color: Colors.grey,

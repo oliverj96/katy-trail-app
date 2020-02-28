@@ -34,7 +34,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+   
+  assets:     
+    - assets/images/katy_trail.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

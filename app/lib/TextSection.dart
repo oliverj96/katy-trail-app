@@ -5,7 +5,7 @@ class TextSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.only(top: 10, right: 30, left: 30, bottom: 10),
+        margin: EdgeInsets.only(right: 30, left: 30, bottom: 10),
         child: Column(
           children: <Widget>[
             Text(
@@ -18,6 +18,7 @@ class TextSection extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
               ),
+              textAlign: TextAlign.justify,
             ),
           ],
         ),

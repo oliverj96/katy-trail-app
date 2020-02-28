@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './TextSection.dart';
 import './TitleSection.dart';
+import './AboutImage.dart';
 
 class AboutPage extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class AboutPage extends StatelessWidget {
     return ListView(
       children: <Widget>[
         TitleSection(),
-        Image.asset('assets/images/katy_trail.jpg'),
+        AboutImage(),
         TextSection(),
       ],
     );
