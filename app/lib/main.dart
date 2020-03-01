@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'AboutPage.dart';
 import './home_page/homepage.dart';
 
 void main() => runApp(MyApp());
@@ -30,12 +31,62 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('About'),
+        leading: new IconButton(
+          alignment: Alignment.centerLeft,
+          icon: Icon(
+          Icons.keyboard_arrow_left, 
+          color: Colors.white,
+          ),
+          onPressed: () {
+            // do something
+          },
+        ),
+        actions: <Widget>[ 
+          IconButton(
+            icon: Icon(
+            Icons.bookmark,
+            color: Colors.white,
+            ),
+            onPressed: () {
+              // do something
+            },
+          ),
+        ],
       ),
       body: Center(
         child: HomePage(),
-        ),
-      );
-    
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        //onTap: onTabTapped, // new
+        //currentIndex: _currentIndex, // new
+        currentIndex: 2,
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.location_on,
+              color: Colors.grey,
+              size: 40.0,
+            ),
+            title: new Text("Test"),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.explore,
+              color: Colors.grey,
+              size: 40.0,
+            ),
+            title: new Text("Explore"),
+          ),
+          BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.info,
+                color: Colors.grey,
+                size: 40.0,
+              ),
+              title: new Text("About")),
+        ],
+      ),
+    );
   }
 }
