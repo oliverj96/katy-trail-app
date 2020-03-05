@@ -10,8 +10,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Katy Trail App',
+    return MaterialApp(       
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -42,46 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
   //@override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-        //title: Text(title),
-        /*leading: new IconButton(
-          alignment: Alignment.centerLeft,
-            icon: Icon(
-            Icons.keyboard_arrow_left, 
-            color: Colors.white,
-            ),
-            onPressed: (){
-              
-            },
-        ),*/
-        /*actions: <Widget>[ 
-          IconButton(
-            icon: Icon(
-            Icons.bookmark,
-            color: Colors.white,
-            ),
-            onPressed: (){
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => new AboutPage()),
-              );
-            },
-          ),
-        ],*/
-      //),
-      /*
-      body: Center(
-        child: HomePage(),
-      ),*/
       body: PageStorage(child: currentScreen, bucket: bucket),
-
       bottomNavigationBar: bmnav.BottomNav(
         index: currentTab,
         onTap: (i) {
           setState(() {
             currentTab = i;
             currentScreen = screens[i];
-            
           });
         },
         items: [
@@ -91,41 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
           bmnav.BottomNavItem(Icons.info, label: 'About'),
         ],
       ),
-
-/*
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(
-              Icons.location_on,
-              color: Colors.grey,
-              size: 40.0,
-            ),
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AboutPage()), 
-              );
-            },
-            title: new Text("Test"),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(
-              Icons.explore,
-              color: Colors.grey,
-              size: 40.0,
-            ),
-            title: new Text("Explore"),
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.info,
-                color: Colors.grey,
-                size: 40.0,
-              ),
-              title: new Text("About")),
-        ],
-      ),*/
     );
   }
 }

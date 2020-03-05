@@ -14,7 +14,6 @@ class About extends StatelessWidget {
             ListTile(
               onTap: (){
                 Navigator.of(context).push(
-                  //context,
                   MaterialPageRoute(builder: (context) => AboutPage()),
                 );
               },
