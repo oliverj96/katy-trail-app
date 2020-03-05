@@ -1,4 +1,4 @@
-import 'package:app/home_page/about.dart';
+//import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
 import './AboutPage.dart';
 import './home_page/homepage.dart';
@@ -30,19 +30,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  String setTitle(int i){
-    if(i == 0){
-      title = "Katy Trail Home";
-    } else if(i == 1){
-      title = "Map";
-    } else if(i == 2){
-      title = "Explore";
-    } else if(i == 3){
-      title = "About";
-    }
-    return title; 
-  }
-
   int currentTab = 0;
 
   final List<Widget> screens = [
@@ -52,13 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget currentScreen = HomePage();
   final PageStorageBucket bucket = PageStorageBucket();
 
-  String title = "Katy Trail"; 
-
   //@override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
+      //appBar: AppBar(
+        //title: Text(title),
         /*leading: new IconButton(
           alignment: Alignment.centerLeft,
             icon: Icon(
@@ -69,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
               
             },
         ),*/
-        actions: <Widget>[ 
+        /*actions: <Widget>[ 
           IconButton(
             icon: Icon(
             Icons.bookmark,
@@ -78,12 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: (){
               Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AboutPage()),
+              MaterialPageRoute(builder: (context) => new AboutPage()),
               );
             },
           ),
-        ],
-      ),
+        ],*/
+      //),
       /*
       body: Center(
         child: HomePage(),
@@ -95,8 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: (i) {
           setState(() {
             currentTab = i;
-            setTitle(i);
             currentScreen = screens[i];
+            
           });
         },
         items: [

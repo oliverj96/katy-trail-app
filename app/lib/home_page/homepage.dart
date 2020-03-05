@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //appBar: new AppBar(title: Text("Katy Trail Home")),
       child: Column(
           children: <Widget>[
             MapW(),

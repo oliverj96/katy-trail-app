@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../AboutPage.dart';
 
 class About extends StatelessWidget {
   const About({Key key}) : super(key: key);
@@ -11,12 +12,12 @@ class About extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              /*onTap: (){
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AboutPage()), 
+              onTap: (){
+                Navigator.of(context).push(
+                  //context,
+                  MaterialPageRoute(builder: (context) => AboutPage()),
                 );
-              },*/
+              },
               leading: Icon(Icons.school),
               title: Text('About'),
               subtitle: Text('Learn about the Katy Trail and this project'),
