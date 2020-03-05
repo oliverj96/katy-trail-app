@@ -2,18 +2,37 @@ import 'package:flutter/material.dart';
 import './map.dart';
 import './explore.dart';
 import './about.dart';
+import '../AboutPage.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return Scaffold(
+      appBar: new AppBar(title: Text("Katy Trail Home"),
+        actions: <Widget>[ 
+          IconButton(
+            icon: Icon(
+              Icons.bookmark,
+              color: Colors.white,
+            ),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => new AboutPage()),
+              );
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
           children: <Widget>[
             MapW(),
             Explore(),
             About(),
           ],
         )
+      )
     );
   }
 }

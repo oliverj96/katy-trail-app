@@ -10,7 +10,13 @@ class Explore extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            const ListTile(
+            ListTile(
+              /*onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExplorePage()), 
+                );
+              },*/
               leading: Icon(Icons.map),
               title: Text('Explore'),
               subtitle: Text('Learn more about all locations on the Katy Trail'),
