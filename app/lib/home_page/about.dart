@@ -10,7 +10,13 @@ class About extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            const ListTile(
+            ListTile(
+              /*onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutPage()), 
+                );
+              },*/
               leading: Icon(Icons.school),
               title: Text('About'),
               subtitle: Text('Learn about the Katy Trail and this project'),

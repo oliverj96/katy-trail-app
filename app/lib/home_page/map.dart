@@ -6,7 +6,12 @@ class MapW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>{print("test")},
+      /*onTap: (){
+        Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MapPage()),
+        );
+      },*/
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.max,
