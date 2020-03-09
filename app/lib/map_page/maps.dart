@@ -29,7 +29,7 @@ import 'package:latlong/latlong.dart';
 // }
 
 class MapPage extends StatefulWidget {
-  MapPage({Key key}) : super(key: key);
+  MapPage({Key key, String url, String token}) : super(key: key);
 
   @override
   _MapPageState createState() => _MapPageState();
