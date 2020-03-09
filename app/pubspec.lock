@@ -185,7 +185,25 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.6.1"
+=======
+    version: "1.6.5"
+  path_provider_macos:
+    dependency: transitive
+    description:
+      name: path_provider_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
+  path_provider_platform_interface:
+    dependency: transitive
+    description:
+      name: path_provider_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
+>>>>>>> df387bac26e04e3892d9b356526690a48ce1cdd4
   pedantic:
     dependency: transitive
     description:
@@ -207,6 +225,16 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
+<<<<<<< HEAD
+=======
+  plugin_platform_interface:
+    dependency: transitive
+    description:
+      name: plugin_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
+>>>>>>> df387bac26e04e3892d9b356526690a48ce1cdd4
   positioned_tap_detector:
     dependency: transitive
     description:
