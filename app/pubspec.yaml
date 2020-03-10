@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  audioplayers: ^0.13.5
   bmnav: ^0.3.4
   flutter:
     sdk: flutter
@@ -38,6 +39,7 @@ flutter:
    
   assets:     
     - assets/images/katy_trail.jpg
+    - assets/songExample.mp3
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
