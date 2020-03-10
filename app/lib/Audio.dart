@@ -8,7 +8,7 @@ static AudioPlayer audioPlayer = AudioPlayer();
   static int play = 0;
 
   void playAudio() async {
-    audioPlayer = await AudioCache().play("songExample.mp3");
+    //audioPlayer = await AudioCache().play("songExample.mp3");
   }
 
   void stopAudio() async {
