@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../LocationPage.dart';
+import '../location_page/LocationPage.dart';
 
 class Explore extends StatelessWidget {
   const Explore({Key key}) : super(key: key);

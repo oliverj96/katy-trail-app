@@ -1,8 +1,8 @@
 //import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
-import './AboutPage.dart';
+import './about_page/AboutPage.dart';
 import './home_page/homepage.dart';
-import './LocationPage.dart';
+import './location_page/LocationPage.dart';
 import 'package:bmnav/bmnav.dart' as bmnav;
 
 void main() => runApp(MyApp());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './map.dart';
 import './explore.dart';
 import './about.dart';
-import '../AboutPage.dart';
+import '../about_page/AboutPage.dart';
 
 class HomePage extends StatelessWidget {
   @override
