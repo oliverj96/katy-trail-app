@@ -5,8 +5,6 @@ import './home_page/homepage.dart';
 import './LocationPage.dart';
 import 'package:bmnav/bmnav.dart' as bmnav;
 
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -35,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
 
   final List<Widget> screens = [
-    HomePage(), AboutPage(), LocationPage(), AboutPage(), //replace with MapPage(), ExplorePage() eventually 
+    HomePage(), AboutPage(), LocationPage(), AboutPage(), 
   ];
 
   Widget currentScreen = HomePage();
