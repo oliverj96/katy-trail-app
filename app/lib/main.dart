@@ -1,7 +1,8 @@
 //import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
-import './AboutPage.dart';
+import './about_page/AboutPage.dart';
 import './home_page/homepage.dart';
+import './location_page/LocationPage.dart';
 import 'package:bmnav/bmnav.dart' as bmnav;
 
 void main() => runApp(MyApp());
@@ -27,12 +28,12 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> {  
 
   int currentTab = 0;
 
   final List<Widget> screens = [
-    HomePage(), AboutPage(), AboutPage(), AboutPage(), //replace with MapPage(), ExplorePage() eventually 
+    HomePage(), AboutPage(), LocationPage(), AboutPage(), 
   ];
 
   Widget currentScreen = HomePage();
