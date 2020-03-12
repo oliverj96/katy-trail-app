@@ -37,5 +37,4 @@ lib/generated_plugin_registrant.dart
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # Key files
-/lib/map_page/access.key
-/lib/map_page/url.key
+*.key
