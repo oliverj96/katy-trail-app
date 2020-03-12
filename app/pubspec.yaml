@@ -39,6 +39,10 @@ flutter:
    
   assets:     
     - assets/images/katy_trail.jpg
+    - assets/docs/path.txt
+    - assets/keys/access.key
+    - assets/keys/url.key
+    
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
