@@ -8,7 +8,6 @@
 .buildlog/
 .history
 .svn/
-assets/docs/path.txt
 pubspec.lock
 
 # IntelliJ related
