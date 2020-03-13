@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../location_page/LocationPage.dart';
 
 class Explore extends StatelessWidget {
   const Explore({Key key}) : super(key: key);
@@ -10,7 +11,13 @@ class Explore extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            const ListTile(
+            ListTile(
+              onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LocationPage()), 
+                );
+              },
               leading: Icon(Icons.map),
               title: Text('Explore'),
               subtitle: Text('Learn more about all locations on the Katy Trail'),

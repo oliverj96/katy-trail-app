@@ -1,7 +1,10 @@
+//import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
 import './about_page/AboutPage.dart';
-import './map_page/maps.dart';
 import './home_page/homepage.dart';
+import './map_page/maps.dart';
+import './location_page/LocationPage.dart';
+import 'package:bmnav/bmnav.dart' as bmnav;
 
 void main() => runApp(MyApp());
 
@@ -9,8 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Katy Trail App',
+    return MaterialApp(       
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -27,65 +29,34 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
+class _MyHomePageState extends State<MyHomePage> {  
+
+  int currentTab = 0;
+
+  final List<Widget> screens = [
+    HomePage(), MapPage(), LocationPage(), AboutPage(), 
+  ];
+
+  Widget currentScreen = HomePage();
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  //@override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('About'),
-        leading: new IconButton(
-          alignment: Alignment.centerLeft,
-          icon: Icon(
-          Icons.keyboard_arrow_left, 
-          color: Colors.white,
-          ),
-          onPressed: () {
-            // do something
-          },
-        ),
-        actions: <Widget>[ 
-          IconButton(
-            icon: Icon(
-            Icons.bookmark,
-            color: Colors.white,
-            ),
-            onPressed: () {
-              // do something
-            },
-          ),
-        ],
-      ),
-      body: Center(
-        child: MapPage(),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        //onTap: onTabTapped, // new
-        //currentIndex: _currentIndex, // new
-        currentIndex: 2,
+      body: PageStorage(child: currentScreen, bucket: bucket),
+      bottomNavigationBar: bmnav.BottomNav(
+        index: currentTab,
+        onTap: (i) {
+          setState(() {
+            currentTab = i;
+            currentScreen = screens[i];
+          });
+        },
         items: [
-          BottomNavigationBarItem(
-            icon: new Icon(
-              Icons.location_on,
-              color: Colors.grey,
-              size: 40.0,
-            ),
-            title: new Text("Test"),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(
-              Icons.explore,
-              color: Colors.grey,
-              size: 40.0,
-            ),
-            title: new Text("Explore"),
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(
-                Icons.info,
-                color: Colors.grey,
-                size: 40.0,
-              ),
-              title: new Text("About")),
+          bmnav.BottomNavItem(Icons.home, label: 'Home'),
+          bmnav.BottomNavItem(Icons.location_on, label: 'Map'),
+          bmnav.BottomNavItem(Icons.explore, label: 'Explore'),
+          bmnav.BottomNavItem(Icons.info, label: 'About'),
         ],
       ),
     );

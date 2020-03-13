@@ -64,14 +64,14 @@ class _MapPageState extends State<MapPage> {
     }
 
     // Retrieve API url and token
-    // TODO Retrieve from Key files from the asset folder
+    // TODO: Retrieve from Key files from the asset folder
     String url, token;
     url =
         'https://api.mapbox.com/styles/v1/ojohnson7cc/ck79a877u2ffj1jnn4dfgh3r9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWE0ZG5nMHIyaDNlcWh4cHd5N3I2bSJ9.L1xfay1JISdfIO1jDp8rTg';
     token =
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
     
-    // TODO Get location and map onto the map
+    // TODO: Get location and map onto the map
     // var geolocator = Geolocator();
     // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
     
