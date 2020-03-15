@@ -36,6 +36,7 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     // Build map path from file
+    // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
     getPoints(data);
 
