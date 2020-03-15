@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import './about_page/AboutPage.dart';
 import './home_page/homepage.dart';
+import './map_page/maps.dart';
 import './location_page/LocationPage.dart';
 import 'package:bmnav/bmnav.dart' as bmnav;
 
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
 
   final List<Widget> screens = [
-    HomePage(), AboutPage(), LocationPage(), AboutPage(), 
+    HomePage(), MapPage(), LocationPage(), AboutPage(), 
   ];
 
   Widget currentScreen = HomePage();
