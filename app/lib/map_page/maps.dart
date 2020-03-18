@@ -12,6 +12,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -35,6 +36,7 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
@@ -43,6 +45,7 @@ class _MapPageState extends State<MapPage> {
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
+    
     for (var location in sampleData) {
       // Create marker widget for each location
       var temp = new Marker(
@@ -63,7 +66,6 @@ class _MapPageState extends State<MapPage> {
       // Append location to list of places
       locationPlaces.add(temp);
     }
-
     // Retrieve API url and token
     // TODO: Retrieve from Key files from the asset folder
     String url, token;
