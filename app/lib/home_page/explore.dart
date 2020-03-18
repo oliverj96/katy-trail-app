@@ -14,7 +14,7 @@ class Explore extends StatelessWidget {
             ListTile(
               onTap: (){
                 Navigator.push(
-                context,
+                  context,
                 MaterialPageRoute(builder: (context) => LocationPage()), 
                 );
               },

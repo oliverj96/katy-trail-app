@@ -6,20 +6,15 @@ class MapW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      /*onTap: (){
-        Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MapPage()),
-        );
-      },*/
+    return Container(
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
               onTap: (){
-                Navigator.of(context).push(
+                Navigator.push(
+                  context,
                   MaterialPageRoute(builder: (context) => MapPage()),
                 );
               },
