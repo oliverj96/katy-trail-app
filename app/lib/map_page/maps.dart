@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -28,6 +29,32 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  // return true or false based on if user's location intersects with specified coordinates polygon
+  bool inside(point, vs) {
+    // Ray-casting algorithm based on
+    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+    var x = point[0], y = point[1];
+
+    var inside = false;
+    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+        var xi = vs[i][0], yi = vs[i][1];
+        var xj = vs[j][0], yj = vs[j][1];
+
+        var intersect = ((yi > y) != (yj > y))
+            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+
+    return inside;
+  }
+
+  // Get a user's current location and print longitude and latitude
+  Future getCurrentLocation() async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position.latitude.toString()+ " "); 
+    print(position.longitude.toString()); 
+  }
+
   final sampleData = [
     {"name": "Location 1", "long": 38.766964, "lat": -90.489257},
   ];
@@ -36,6 +63,10 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // TODO Create polygons for each location
+    var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
+
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
@@ -57,9 +88,11 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
+                    // Print true or false if user is within specified coordinates square 
+                    print(inside([ 38.766974, -90.489245 ], polygon));
                     // TODO Add card once tapped
                     print("Location: " + location["name"] + " was tapped.");
-                  },
+                  }, 
                 ),
               ));
       // Append location to list of places
@@ -74,9 +107,6 @@ class _MapPageState extends State<MapPage> {
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
     
     // TODO: Get location and map onto the map
-    // var geolocator = Geolocator();
-    // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-    
     // Create Flutter Map Widget
     return FlutterMap(
       options: new MapOptions(
