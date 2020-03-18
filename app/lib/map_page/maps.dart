@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+//import 'package:google_map_polyutil/google_map_polyutil.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart' as something;
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
+
 
 class MapPage extends StatefulWidget {
   MapPage({Key key}) : super(key: key);
@@ -28,6 +32,12 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
+  Future getCurrentLocation() async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    print(position.latitude.toString()+ " "); 
+    print(position.longitude.toString()); 
+  }
+
   final sampleData = [
     {"name": "Location 1", "long": 38.766964, "lat": -90.489257},
   ];
@@ -36,6 +46,7 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
@@ -57,9 +68,10 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
+                    getCurrentLocation(); 
                     // TODO Add card once tapped
                     print("Location: " + location["name"] + " was tapped.");
-                  },
+                  }, //
                 ),
               ));
       // Append location to list of places
