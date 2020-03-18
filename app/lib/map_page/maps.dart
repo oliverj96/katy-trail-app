@@ -12,6 +12,14 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  _showLocationCard(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return (Container());
+        });
+  }
+
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -56,6 +64,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     // TODO Add card once tapped
+                    _showLocationCard(context);
                     print("Location: " + location["name"] + " was tapped.");
                   },
                 ),
@@ -71,11 +80,11 @@ class _MapPageState extends State<MapPage> {
         'https://api.mapbox.com/styles/v1/ojohnson7cc/ck79a877u2ffj1jnn4dfgh3r9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWE0ZG5nMHIyaDNlcWh4cHd5N3I2bSJ9.L1xfay1JISdfIO1jDp8rTg';
     token =
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
-    
+
     // TODO: Get location and map onto the map
     // var geolocator = Geolocator();
     // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-    
+
     // Create Flutter Map Widget
     return FlutterMap(
       options: new MapOptions(
