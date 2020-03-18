@@ -12,14 +12,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  _showLocationCard(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return (Container());
-        });
-  }
-
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -51,6 +43,7 @@ class _MapPageState extends State<MapPage> {
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
+
     for (var location in sampleData) {
       // Create marker widget for each location
       var temp = new Marker(
@@ -64,7 +57,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     // TODO Add card once tapped
-                    _showLocationCard(context);
+                    // _showLocationCard(context);
                     print("Location: " + location["name"] + " was tapped.");
                   },
                 ),
@@ -72,7 +65,6 @@ class _MapPageState extends State<MapPage> {
       // Append location to list of places
       locationPlaces.add(temp);
     }
-
     // Retrieve API url and token
     // TODO: Retrieve from Key files from the asset folder
     String url, token;
@@ -86,23 +78,47 @@ class _MapPageState extends State<MapPage> {
     // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
 
     // Create Flutter Map Widget
-    return FlutterMap(
-      options: new MapOptions(
-          center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
-      layers: [
-        new TileLayerOptions(urlTemplate: url, additionalOptions: {
-          'accessToken': token,
-          'id': 'mapbox.mapbox-streets-v7'
-        }),
-        new PolylineLayerOptions(polylines: [
-          new Polyline(
-            points: points,
-            strokeWidth: 5.0,
-            color: Colors.blue,
-          )
-        ]),
-        new MarkerLayerOptions(markers: locationPlaces),
-      ],
+    return Scaffold(
+      appBar: new AppBar(
+        title: Text('Map'),
+      ),
+      body: FlutterMap(
+        options: new MapOptions(
+            center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
+        layers: [
+          new TileLayerOptions(urlTemplate: url, additionalOptions: {
+            'accessToken': token,
+            'id': 'mapbox.mapbox-streets-v7'
+          }),
+          new PolylineLayerOptions(polylines: [
+            new Polyline(
+              points: points,
+              strokeWidth: 5.0,
+              color: Colors.blue,
+            )
+          ]),
+          new MarkerLayerOptions(markers: locationPlaces),
+        ],
+      ),
     );
+
+    // return FlutterMap(
+    //   options: new MapOptions(
+    //       center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
+    //   layers: [
+    //     new TileLayerOptions(urlTemplate: url, additionalOptions: {
+    //       'accessToken': token,
+    //       'id': 'mapbox.mapbox-streets-v7'
+    //     }),
+    //     new PolylineLayerOptions(polylines: [
+    //       new Polyline(
+    //         points: points,
+    //         strokeWidth: 5.0,
+    //         color: Colors.blue,
+    //       )
+    //     ]),
+    //     new MarkerLayerOptions(markers: locationPlaces),
+    //   ],
+    // );
   }
 }
