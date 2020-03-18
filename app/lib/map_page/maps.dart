@@ -36,6 +36,13 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // Check user's current location every 10 seconds  
+    // TODO Compare user's current location with all Katy Trail locations
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      print(DateTime.now());
+    });
+
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
