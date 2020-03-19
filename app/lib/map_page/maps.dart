@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
+import './location-card.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({Key key}) : super(key: key);
@@ -13,7 +14,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -56,13 +56,20 @@ class _MapPageState extends State<MapPage> {
   }
 
   final sampleData = [
-    {"name": "Location 1", "long": 38.766964, "lat": -90.489257},
+    {"name": "Location 1", "description": "This is about location 1", "long": 38.766964, "lat": -90.489257},
+    {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
+    {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
   ];
 
   final points = <LatLng>[];
 
   @override
   Widget build(BuildContext context) {
+    _showLocationCard(context, String name, String description){
+      showModalBottomSheet(context: context, builder: (BuildContext context) {
+        return LocationCard(name, description);
+      });
+    }
 
     // TODO Create polygons for each location
     var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
@@ -81,7 +88,7 @@ class _MapPageState extends State<MapPage> {
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
-    
+
     for (var location in sampleData) {
       // Create marker widget for each location
       var temp = new Marker(
@@ -97,6 +104,7 @@ class _MapPageState extends State<MapPage> {
                     // Print true or false if user is within specified coordinates square 
                     print(inside([ 38.766974, -90.489245 ], polygon));
                     // TODO Add card once tapped
+                    _showLocationCard(context, location["name"], location["description"]);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 
                 ),
@@ -111,26 +119,34 @@ class _MapPageState extends State<MapPage> {
         'https://api.mapbox.com/styles/v1/ojohnson7cc/ck79a877u2ffj1jnn4dfgh3r9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWE0ZG5nMHIyaDNlcWh4cHd5N3I2bSJ9.L1xfay1JISdfIO1jDp8rTg';
     token =
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
-    
+
     // TODO: Get location and map onto the map
+    // var geolocator = Geolocator();
+    // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
+
     // Create Flutter Map Widget
-    return FlutterMap(
-      options: new MapOptions(
-          center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
-      layers: [
-        new TileLayerOptions(urlTemplate: url, additionalOptions: {
-          'accessToken': token,
-          'id': 'mapbox.mapbox-streets-v7'
-        }),
-        new PolylineLayerOptions(polylines: [
-          new Polyline(
-            points: points,
-            strokeWidth: 5.0,
-            color: Colors.blue,
-          )
-        ]),
-        new MarkerLayerOptions(markers: locationPlaces),
-      ],
+    return Scaffold(
+      appBar: new AppBar(
+        title: Text('Map'),
+      ),
+      body: FlutterMap(
+        options: new MapOptions(
+            center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
+        layers: [
+          new TileLayerOptions(urlTemplate: url, additionalOptions: {
+            'accessToken': token,
+            'id': 'mapbox.mapbox-streets-v7'
+          }),
+          new PolylineLayerOptions(polylines: [
+            new Polyline(
+              points: points,
+              strokeWidth: 5.0,
+              color: Colors.blue,
+            )
+          ]),
+          new MarkerLayerOptions(markers: locationPlaces),
+        ],
+      ),
     );
   }
 }
