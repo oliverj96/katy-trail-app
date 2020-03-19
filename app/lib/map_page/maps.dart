@@ -3,6 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
+import './location-card.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({Key key}) : super(key: key);
@@ -28,13 +29,21 @@ class _MapPageState extends State<MapPage> {
   }
 
   final sampleData = [
-    {"name": "Location 1", "long": 38.766964, "lat": -90.489257},
+    {"name": "Location 1", "description": "This is about location 1", "long": 38.766964, "lat": -90.489257},
+    {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
+    {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
   ];
 
   final points = <LatLng>[];
 
   @override
   Widget build(BuildContext context) {
+    _showLocationCard(context, String name, String description){
+      showModalBottomSheet(context: context, builder: (BuildContext context) {
+        return LocationCard(name, description);
+      });
+    }
+
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
@@ -57,7 +66,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     // TODO Add card once tapped
-                    // _showLocationCard(context);
+                    _showLocationCard(context, location["name"], location["description"]);
                     print("Location: " + location["name"] + " was tapped.");
                   },
                 ),
@@ -101,24 +110,5 @@ class _MapPageState extends State<MapPage> {
         ],
       ),
     );
-
-    // return FlutterMap(
-    //   options: new MapOptions(
-    //       center: new LatLng(38.77699, -90.482418), minZoom: 10.0),
-    //   layers: [
-    //     new TileLayerOptions(urlTemplate: url, additionalOptions: {
-    //       'accessToken': token,
-    //       'id': 'mapbox.mapbox-streets-v7'
-    //     }),
-    //     new PolylineLayerOptions(polylines: [
-    //       new Polyline(
-    //         points: points,
-    //         strokeWidth: 5.0,
-    //         color: Colors.blue,
-    //       )
-    //     ]),
-    //     new MarkerLayerOptions(markers: locationPlaces),
-    //   ],
-    // );
   }
 }
