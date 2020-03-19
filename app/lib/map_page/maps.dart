@@ -67,6 +67,12 @@ class _MapPageState extends State<MapPage> {
     // TODO Create polygons for each location
     var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
 
+    // Check user's current location every 10 seconds  
+    // TODO Compare user's current location with all Katy Trail locations
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      getCurrentLocation();
+    });
+
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
