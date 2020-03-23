@@ -65,6 +65,7 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
     _showLocationCard(context, String name, String description){
       showModalBottomSheet(context: context, builder: (BuildContext context) {
         return LocationCard(name, description);
@@ -76,7 +77,7 @@ class _MapPageState extends State<MapPage> {
 
     // Check user's current location every 10 seconds  
     // TODO Compare user's current location with all Katy Trail locations
-    Timer.periodic(Duration(seconds: 10), (timer) {
+    Timer.periodic(Duration(seconds: 30), (timer) {
       getCurrentLocation();
     });
 

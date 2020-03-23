@@ -47,6 +47,7 @@ flutter:
     - assets/images/about.png
     - assets/images/explore.png
     - assets/images/map.png
+    - assets/images/location.png 
     - assets/docs/path.txt
     #- assets/songExample.mp3
   #  - assets/songExample.mp3
