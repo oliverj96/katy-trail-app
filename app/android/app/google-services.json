@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:79228233411:android:84221f50cee52add42e476",
+        "mobilesdk_app_id": "1:79228233411:android:5f5be226aec2fdd842e476",
         "android_client_info": {
-          "package_name": "com.katy_trail.katy_trail_experience"
+          "package_name": "katytrail.app"
         }
       },
       "oauth_client": [
