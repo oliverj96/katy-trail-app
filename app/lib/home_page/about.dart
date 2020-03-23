@@ -17,7 +17,7 @@ class About extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => AboutPage()),
                 );
               },
-              leading: Icon(Icons.school),
+              leading: Image.asset('assets/images/about.png'),
               title: Text('About'),
               subtitle: Text('Learn about the Katy Trail and this project'),
             )

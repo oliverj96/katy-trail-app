@@ -44,6 +44,9 @@ flutter:
    
   assets:     
     - assets/images/katy_trail.jpg
+    - assets/images/about.png
+    - assets/images/explore.png
+    - assets/images/map.png
     - assets/docs/path.txt
     #- assets/songExample.mp3
   #  - assets/songExample.mp3

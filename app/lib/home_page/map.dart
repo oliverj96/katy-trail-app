@@ -18,7 +18,7 @@ class MapW extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MapPage()),
                 );
               },
-              leading: Icon(Icons.map),
+              leading: Image.asset('assets/images/map.png'),
               title: Text('Map'),
               subtitle: Text('See the Katy Trail on maps and find locations'),
             )

@@ -18,7 +18,7 @@ class Explore extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => LocationPage()), 
                 );
               },
-              leading: Icon(Icons.map),
+              leading: Image.asset('assets/images/explore.png'),
               title: Text('Explore'),
               subtitle: Text('Learn more about all locations on the Katy Trail'),
             )
