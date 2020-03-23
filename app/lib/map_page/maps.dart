@@ -50,9 +50,9 @@ class _MapPageState extends State<MapPage> {
 
   // Get a user's current location and print longitude and latitude
   Future getCurrentLocation() async {
-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(position.latitude.toString()+ " "); 
-    print(position.longitude.toString()); 
+    // Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    // print(position.latitude.toString()+ " "); 
+    // print(position.longitude.toString()); 
   }
 
   final sampleData = [
