@@ -12,12 +12,13 @@ class About extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0),
               onTap: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => AboutPage()),
                 );
               },
-              leading: Image.asset('assets/images/about.png'),
+              leading: Image.asset('assets/images/about.png', height: 100, width: 100),
               title: Text('About'),
               subtitle: Text('Learn about the Katy Trail and this project'),
             )
