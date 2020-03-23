@@ -17,7 +17,6 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  audioplayers: ^0.13.5
   bmnav: ^0.3.4
   flutter:
     sdk: flutter
