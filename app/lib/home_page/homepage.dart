@@ -27,9 +27,11 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
+            
             MapW(),
             Explore(),
             About(),
+            
           ],
         )
       )

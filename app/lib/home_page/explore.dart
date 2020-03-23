@@ -12,15 +12,16 @@ class Explore extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0),
               onTap: (){
                 Navigator.push(
                   context,
                 MaterialPageRoute(builder: (context) => LocationPage()), 
                 );
               },
-              leading: Icon(Icons.map),
+              leading: Image.asset('assets/images/explore.png', height: 100, width: 100),
               title: Text('Explore'),
-              subtitle: Text('Learn more about all locations on the Katy Trail'),
+              subtitle: Text('Learn about all locations on the Katy Trail'),
             )
           ],
         )
