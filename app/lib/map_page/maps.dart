@@ -77,9 +77,9 @@ class _MapPageState extends State<MapPage> {
 
     // Check user's current location every 10 seconds  
     // TODO Compare user's current location with all Katy Trail locations
-    Timer.periodic(Duration(seconds: 30), (timer) {
+    /*Timer.periodic(Duration(seconds: 30), (timer) {
       getCurrentLocation();
-    });
+    });*/
 
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update

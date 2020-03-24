@@ -1,5 +1,6 @@
 //import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './about_page/AboutPage.dart';
 import './home_page/homepage.dart';
 import './map_page/maps.dart';
@@ -12,6 +13,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(       
       theme: ThemeData(
         primarySwatch: Colors.blue,
