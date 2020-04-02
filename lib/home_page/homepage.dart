@@ -5,6 +5,9 @@ import './about.dart';
 import '../about_page/AboutPage.dart';
 
 class HomePage extends StatelessWidget {
+  final List<Map<String, Object>> data;
+  HomePage(this.data);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +31,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             
-            MapW(),
-            Explore(),
+            MapW(data),
+            Explore(data),
             About(),
             
           ],

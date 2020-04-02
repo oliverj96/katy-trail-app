@@ -7,13 +7,16 @@ import 'dart:async';
 import './location-card.dart';
 
 class MapPage extends StatefulWidget {
-  MapPage({Key key}) : super(key: key);
+  final List<Map<String, Object>> dataPointsCol;
+  MapPage(this.dataPointsCol);
 
   @override
-  _MapPageState createState() => _MapPageState();
+  _MapPageState createState() => _MapPageState(dataPointsCol);
 }
 
 class _MapPageState extends State<MapPage> {
+  final List<Map<String, Object>> dataPointsCol;
+  _MapPageState(this.dataPointsCol);
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -55,12 +58,6 @@ class _MapPageState extends State<MapPage> {
     // print(position.longitude.toString()); 
   }
 
-  final sampleData = [
-    {"name": "Location 1", "description": "This is about location 1", "long": 38.766964, "lat": -90.489257},
-    {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
-    {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
-  ];
-
   final points = <LatLng>[];
 
   @override
@@ -68,7 +65,7 @@ class _MapPageState extends State<MapPage> {
 
     _showLocationCard(context, String name, String description){
       showModalBottomSheet(context: context, builder: (BuildContext context) {
-        return LocationCard(name, description);
+        return LocationCard(name, description, dataPointsCol);
       });
     }
 
@@ -90,7 +87,7 @@ class _MapPageState extends State<MapPage> {
     // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
 
-    for (var location in sampleData) {
+    for (var location in dataPointsCol) {
       // Create marker widget for each location
       var temp = new Marker(
           width: 45.0,

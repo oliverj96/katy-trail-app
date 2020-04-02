@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../about_page/TextSection.dart';
 import '../about_page/TitleSection.dart';
-import '../about_page/AboutImage.dart';
 import '../about_page/AboutPage.dart';
-// import 'package:firebase/firebase.dart';
 
 class LocationPage extends StatelessWidget {
+  final List<Map<String, Object>> data;
+  LocationPage(this.data);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

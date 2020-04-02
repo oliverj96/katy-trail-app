@@ -4,8 +4,9 @@ import '../location_page/LocationPage.dart';
 class LocationCard extends StatelessWidget {
   final String name;
   final String description;
+  final List<Map<String, Object>> data;
 
-  LocationCard(this.name, this.description);
+  LocationCard(this.name, this.description, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class LocationCard extends StatelessWidget {
                     onTap: (){
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LocationPage()),
+                      MaterialPageRoute(builder: (context) => LocationPage(data)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),
@@ -64,7 +65,7 @@ class LocationCard extends StatelessWidget {
                       Navigator.push(
                       context,
                       //TODO will push to BookmarkPage and add location to bookmarks
-                      MaterialPageRoute(builder: (context) => LocationPage()),
+                      MaterialPageRoute(builder: (context) => LocationPage(data)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0),
