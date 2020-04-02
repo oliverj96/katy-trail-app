@@ -12,15 +12,20 @@ class MapW extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0),
               onTap: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MapPage()),
                 );
               },
-              leading: Icon(Icons.map),
+              leading: Container(
+                height: 100,
+                child: Image.asset('assets/images/map.png', height: 100, width: 100),
+              ),
+              //leading: 
               title: Text('Map'),
-              subtitle: Text('See the Katy Trail on maps and find locations'),
+              subtitle: Text('See the Katy Trail on maps and find locations'), 
             )
           ],
         )

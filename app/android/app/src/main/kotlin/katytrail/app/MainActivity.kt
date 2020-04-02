@@ -1,4 +1,4 @@
-package com.example.app
+package katytrail.app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

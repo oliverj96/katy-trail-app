@@ -50,9 +50,9 @@ class _MapPageState extends State<MapPage> {
 
   // Get a user's current location and print longitude and latitude
   Future getCurrentLocation() async {
-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    print(position.latitude.toString()+ " "); 
-    print(position.longitude.toString()); 
+    // Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    // print(position.latitude.toString()+ " "); 
+    // print(position.longitude.toString()); 
   }
 
   final sampleData = [
@@ -65,6 +65,7 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
     _showLocationCard(context, String name, String description){
       showModalBottomSheet(context: context, builder: (BuildContext context) {
         return LocationCard(name, description);
@@ -76,9 +77,9 @@ class _MapPageState extends State<MapPage> {
 
     // Check user's current location every 10 seconds  
     // TODO Compare user's current location with all Katy Trail locations
-    Timer.periodic(Duration(seconds: 10), (timer) {
+    /*Timer.periodic(Duration(seconds: 30), (timer) {
       getCurrentLocation();
-    });
+    });*/
 
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update

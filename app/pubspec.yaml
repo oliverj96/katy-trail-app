@@ -17,7 +17,6 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  audioplayers: ^0.13.5
   bmnav: ^0.3.4
   flutter:
     sdk: flutter
@@ -25,7 +24,10 @@ dependencies:
   geolocator: ^5.3.0
   google_maps_util:
   google_map_polyutil: ^1.0.0
+  # firebase_core: ^0.4.0+9
+  # firebase_analytics: ^5.0.2
   
+  flutter_launcher_name: ^0.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -41,6 +43,9 @@ dev_dependencies:
   #android: true
   #ios: true  
 
+flutter_launcher_name:
+  name: "Katy Trail"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -51,6 +56,12 @@ flutter:
     - assets/images/katy_trail.jpg
     - assets/docs/path.txt 
     #- assets/icon/icon.png //this is for adding the app's icon
+    - assets/images/about.png
+    - assets/images/explore.png
+    - assets/images/map.png
+    - assets/images/location.png 
+    - assets/docs/path.txt
+
     #- assets/songExample.mp3
   #  - assets/songExample.mp3
   # The following line ensures that the Material Icons font is

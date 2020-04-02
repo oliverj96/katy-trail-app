@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../about_page/TextSection.dart';
 import '../about_page/TitleSection.dart';
 import '../about_page/AboutImage.dart';
-import './Audio.dart';
 import '../about_page/AboutPage.dart';
+// import 'package:firebase/firebase.dart';
 
 class LocationPage extends StatelessWidget {
   @override
@@ -33,7 +33,6 @@ class LocationPage extends StatelessWidget {
             TextSection(),
             TextSection(),
             TextSection(),
-            Audio(),
           ],
         ), 
       ),
