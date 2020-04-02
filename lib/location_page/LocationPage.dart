@@ -29,10 +29,6 @@ class LocationPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             TitleSection(),
-            AboutImage(),
-            TextSection(),
-            TextSection(),
-            TextSection(),
           ],
         ), 
       ),
