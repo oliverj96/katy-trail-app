@@ -1,10 +1,12 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async';
+import '../about_page/AboutPage.dart';
 import './location-card.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({Key key}) : super(key: key);
@@ -14,6 +16,49 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  
+  // For testing purposes ONLY 
+  int i = 0;
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+  @override
+  void initState() {
+    super.initState();
+    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iOS = new IOSInitializationSettings();
+    var initSetttings = new InitializationSettings(android, iOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initSetttings,
+      onSelectNotification: onSelectNotification
+    );
+  }
+
+  Future onSelectNotification(String payload) {
+    // Use payload for selecting specific location page 
+    debugPrint("payload : $payload");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => new AboutPage()),
+      );
+  }
+
+  showNotification() async {
+    var android = new AndroidNotificationDetails(
+      'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
+      priority: Priority.High,importance: Importance.Max
+    );
+    var iOS = new IOSNotificationDetails();
+    var platform = new NotificationDetails(android, iOS);
+    await flutterLocalNotificationsPlugin.show(
+      0, 
+      'Location 1', 
+      'Katy Trail Train Station', 
+      platform
+    );
+  }
+
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -65,6 +110,13 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    // For testing only 
+    // TODO If user intersects with a polygon, pop up associated location page when notification is tapped
+    if(i == 0) {
+      showNotification(); 
+    }
+    i++; 
 
     _showLocationCard(context, String name, String description){
       showModalBottomSheet(context: context, builder: (BuildContext context) {
