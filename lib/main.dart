@@ -1,4 +1,3 @@
-//import 'package:app/home_page/about.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './about_page/AboutPage.dart';
@@ -9,7 +8,6 @@ import './location_page/LocationPage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -34,8 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {  
-
-  int currentTab = 0;
 
   final List<Widget> screens = [
     HomePage(), MapPage(), LocationPage(), AboutPage(), 
