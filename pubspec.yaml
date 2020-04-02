@@ -1,5 +1,5 @@
 name: katy_trail_app
-description: A new Flutter project.
+description: A flutter app to discover Katy Trail.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,18 +19,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  bmnav: ^0.3.4
+  flutter_map:
+  geolocator: ^5.3.0
+  google_maps_util:
+  google_map_polyutil: ^1.0.0
+  flutter_launcher_name: ^0.0.1
+  
+  # iOS Icons and Fonts
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+flutter_launcher_name:
+  name: "Katy Trail"
 
 # The following section is specific to Flutter.
 flutter:
@@ -40,10 +44,15 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:     
+    - assets/images/katy_trail.jpg
+    - assets/docs/path.txt 
+    - assets/images/about.png
+    - assets/images/explore.png
+    - assets/images/map.png
+    - assets/images/location.png
+    - assets/docs/path.txt
+    # - assets/icon/icon.png //this is for adding the app's icon
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
