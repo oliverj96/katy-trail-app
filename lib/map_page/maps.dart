@@ -83,10 +83,7 @@ class _MapPageState extends State<MapPage> {
     var data = loadAsset('assets/docs/path.txt');
     getPoints(data);
 
-    // Dynamically add markers to List
-    // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
-
     for (var location in dataPointsCol) {
       // Create marker widget for each location
       var temp = new Marker(
@@ -100,8 +97,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     // Print true or false if user is within specified coordinates square 
-                    print(inside([ 38.766974, -90.489245 ], polygon));
-                    // TODO Add card once tapped
+                    // print(inside([ 38.766974, -90.489245 ], polygon));
                     _showLocationCard(context, location["name"], location["description"]);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 

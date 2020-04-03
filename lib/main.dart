@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './about_page/AboutPage.dart';
 import './home_page/homepage.dart';
-import './map_page/maps.dart';
-import './location_page/LocationPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,10 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
     {"name": "Location 1", "description": "This is about location 1", "long": 38.766964, "lat": -90.489257},
     {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
     {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
-  ];
-
-  final List<Widget> screens = [
-    HomePage(sampleData), MapPage(sampleData), LocationPage(sampleData), AboutPage(), 
   ];
 
   Widget currentScreen = HomePage(sampleData);
