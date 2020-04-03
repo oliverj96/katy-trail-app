@@ -16,7 +16,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  
+
   // For testing purposes ONLY 
   int i = 0;
 
@@ -127,16 +127,36 @@ class _MapPageState extends State<MapPage> {
     // TODO Create polygons for each location
     var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
 
-    // Check user's current location every 10 seconds  
-    // TODO Compare user's current location with all Katy Trail locations
-    /*Timer.periodic(Duration(seconds: 30), (timer) {
-      getCurrentLocation();
-    });*/
-
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
     getPoints(data);
+    
+/*
+    // Use to check if a user's current location is near a location's vicinity 
+    bool isUserNearLocation = false;
+    // Check user's current location every 5 seconds  
+    // TODO Compare user's current location with all Katy Trail locations
+    Timer.periodic(Duration(seconds: 5), (timer) {
+      getCurrentLocation();
+
+      // TODO replace coordinates with user's current location
+      // If user is inside a polygon and has not been inside polygon 
+      if (!inside([ 38.766974, -90.489245 ], polygon)) {
+        isUserNearLocation = false; 
+      }
+      // If a user is inside a polygon and is near a location
+      else if (inside([ 38.766974, -90.489245 ], polygon) && !isUserNearLocation) {
+        isUserNearLocation = true; 
+        // TODO pass in necessary information
+        showNotification(); 
+      }
+      // If a user is inside a polygon and is not near a location
+      else if(inside([ 38.766974, -90.489245 ], polygon) && isUserNearLocation) {
+        // Do nothing
+      } 
+    });
+*/
 
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
