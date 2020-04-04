@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './ExplorePage.dart';
 
 class LocationListCard extends StatelessWidget {
   final Map<String, Object> locDetails;
@@ -19,7 +20,11 @@ class LocationListCard extends StatelessWidget {
               children: <Widget>[
                 FlatButton(
                   child: const Text('Learn'),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute( builder: (context) => ExplorePage(locDetails)),
+                    );
+                  },
                 ),
                 FlatButton(
                   child: const Text('Bookmark'),
