@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../location_page/LocationPage.dart';
+import '../location_page/ExplorePage.dart';
 
 class LocationCard extends StatelessWidget {
-  final String name;
-  final String description;
+  final Map<String, Object> locDetails;
   final List<Map<String, Object>> data;
 
-  LocationCard(this.name, this.description, this.data);
+  LocationCard(this.locDetails, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LocationCard extends StatelessWidget {
               children: <Widget>[
                 Image.asset('assets/images/location.png', height: 70, width: 70),
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text("   " + name, 
+                  child: Text("   " + locDetails["name"], 
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
@@ -33,7 +33,7 @@ class LocationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text(description, 
+                  child: Text(locDetails["description"], 
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
@@ -50,7 +50,7 @@ class LocationCard extends StatelessWidget {
                     onTap: (){
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LocationPage(data)),
+                      MaterialPageRoute(builder: (context) => ExplorePage(locDetails)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),

@@ -63,9 +63,9 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
 
-    _showLocationCard(context, String name, String description){
+    _showLocationCard(context, Map<String, Object> locData){
       showModalBottomSheet(context: context, builder: (BuildContext context) {
-        return LocationCard(name, description, dataPointsCol);
+        return LocationCard(locData, dataPointsCol);
       });
     }
 
@@ -98,7 +98,7 @@ class _MapPageState extends State<MapPage> {
                   onPressed: () {
                     // Print true or false if user is within specified coordinates square 
                     // print(inside([ 38.766974, -90.489245 ], polygon));
-                    _showLocationCard(context, location["name"], location["description"]);
+                    _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 
                 ),
