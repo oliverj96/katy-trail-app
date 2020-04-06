@@ -131,8 +131,7 @@ class _MapPageState extends State<MapPage> {
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
     getPoints(data);
-    
-/*
+
     // Use to check if a user's current location is near a location's vicinity 
     bool isUserNearLocation = false;
     // Check user's current location every 5 seconds  
@@ -156,7 +155,6 @@ class _MapPageState extends State<MapPage> {
         // Do nothing
       } 
     });
-*/
 
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
