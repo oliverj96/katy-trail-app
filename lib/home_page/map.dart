@@ -3,7 +3,8 @@ import '../map_page/maps.dart';
 
 class MapW extends StatelessWidget {
   final List<Map<String, Object>> data;
-  const MapW(this.data);
+  final points;
+  const MapW(this.data, this.points);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class MapW extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage(data)),
+                  MaterialPageRoute(builder: (context) => MapPage(data, points)),
                 );
               },
               leading: Container(

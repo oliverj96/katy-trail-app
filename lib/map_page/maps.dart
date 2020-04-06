@@ -8,29 +8,18 @@ import './location-card.dart';
 
 class MapPage extends StatefulWidget {
   final List<Map<String, Object>> dataPointsCol;
-  MapPage(this.dataPointsCol);
+  final points;
+  MapPage(this.dataPointsCol, this.points);
 
   @override
-  _MapPageState createState() => _MapPageState(dataPointsCol);
+  _MapPageState createState() => _MapPageState(dataPointsCol, points);
 }
 
 class _MapPageState extends State<MapPage> {
+  // Data variables
   final List<Map<String, Object>> dataPointsCol;
-  _MapPageState(this.dataPointsCol);
-  Future<String> loadAsset(String path) async {
-    return await rootBundle.loadString(path);
-  }
-
-  Future getPoints(Future<String> data) async {
-    return await data.then((dataPoints) {
-      var dump = dataPoints.split(' ');
-      for (var i = 0; i < dump.length - 2; i += 2) {
-        var newPoint =
-            new LatLng(double.parse(dump[i]), double.parse(dump[i + 1]));
-        points.add(newPoint);
-      }
-    });
-  }
+  final points;
+  _MapPageState(this.dataPointsCol, this.points);
 
   // return true or false based on if user's location intersects with specified coordinates polygon
   bool inside(point, vs) {
@@ -40,12 +29,12 @@ class _MapPageState extends State<MapPage> {
 
     var inside = false;
     for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
-        var xi = vs[i][0], yi = vs[i][1];
-        var xj = vs[j][0], yj = vs[j][1];
+      var xi = vs[i][0], yi = vs[i][1];
+      var xj = vs[j][0], yj = vs[j][1];
 
-        var intersect = ((yi > y) != (yj > y))
-            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-        if (intersect) inside = !inside;
+      var intersect =
+          ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
     }
 
     return inside;
@@ -54,25 +43,30 @@ class _MapPageState extends State<MapPage> {
   // Get a user's current location and print longitude and latitude
   Future getCurrentLocation() async {
     // Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    // print(position.latitude.toString()+ " "); 
-    // print(position.longitude.toString()); 
+    // print(position.latitude.toString()+ " ");
+    // print(position.longitude.toString());
   }
 
-  final points = <LatLng>[];
 
   @override
   Widget build(BuildContext context) {
-
-    _showLocationCard(context, Map<String, Object> locData){
-      showModalBottomSheet(context: context, builder: (BuildContext context) {
-        return LocationCard(locData, dataPointsCol);
-      });
+    _showLocationCard(context, Map<String, Object> locData) {
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return LocationCard(locData, dataPointsCol);
+          });
     }
 
     // TODO Create polygons for each location
-    var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
+    var polygon = [
+      [38.767002, -90.489269],
+      [38.766971, -90.489328],
+      [38.766922, -90.489235],
+      [38.766980, -90.489202]
+    ];
 
-    // Check user's current location every 10 seconds  
+    // Check user's current location every 10 seconds
     // TODO Compare user's current location with all Katy Trail locations
     /*Timer.periodic(Duration(seconds: 30), (timer) {
       getCurrentLocation();
@@ -80,8 +74,8 @@ class _MapPageState extends State<MapPage> {
 
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
-    var data = loadAsset('assets/docs/path.txt');
-    getPoints(data);
+    // var data = loadAsset('assets/docs/path.txt');
+    // getPoints(data);
 
     var locationPlaces = List<Marker>();
     for (var location in dataPointsCol) {
@@ -96,11 +90,11 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
-                    // Print true or false if user is within specified coordinates square 
+                    // Print true or false if user is within specified coordinates square
                     // print(inside([ 38.766974, -90.489245 ], polygon));
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
-                  }, 
+                  },
                 ),
               ));
       // Append location to list of places

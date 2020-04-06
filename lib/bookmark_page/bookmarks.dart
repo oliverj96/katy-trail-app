@@ -12,7 +12,7 @@ class _BookmarksState extends State<Bookmarks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(title: Text("Bookmarks")),
-      //  child: child,
+       body: Text("bookmark"),
     );
   }
 }
