@@ -18,9 +18,6 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
 
-  // For testing purposes ONLY 
-  int i = 0;
-
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
@@ -36,7 +33,7 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Future onSelectNotification(String payload) {
+  Future onSelectNotification(String payload) async {
     // Use payload for selecting specific location page 
     debugPrint("payload : $payload");
       Navigator.push(
@@ -107,21 +104,14 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-
-    // For testing only 
+    
     // TODO If user intersects with a polygon, pop up associated location page when notification is tapped
-    /*if(i == 0) {
-      showNotification(); 
-    }
-    i++; */
 
-    //_showLocationCard(context, String name, String description){
       _showLocationCard(context, Map<String, Object> locData){
         showModalBottomSheet(context: context, builder: (BuildContext context) {
           return LocationCard(locData, dataPointsCol);
         });
       }
-    //}
 
     // TODO Create polygons for each location
     var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
@@ -147,7 +137,7 @@ class _MapPageState extends State<MapPage> {
       else if (inside([ 38.766974, -90.489245 ], polygon) && !isUserNearLocation) {
         isUserNearLocation = true; 
         // TODO pass in necessary information
-        showNotification(); 
+        // showNotification(); 
       }
       // If a user is inside a polygon and is not near a location
       else if(inside([ 38.766974, -90.489245 ], polygon) && isUserNearLocation) {
@@ -170,6 +160,7 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
+                    showNotification();
                     // Print true or false if user is within specified coordinates square 
                     // print(inside([ 38.766974, -90.489245 ], polygon));
                     _showLocationCard(context, location);
