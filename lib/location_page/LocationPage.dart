@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import '../about_page/TextSection.dart';
-import '../about_page/TitleSection.dart';
-import '../about_page/AboutImage.dart';
 import '../about_page/AboutPage.dart';
-// import 'package:firebase/firebase.dart';
+import './location_list_cards.dart';
 
 class LocationPage extends StatelessWidget {
+  final List<Map<String, Object>> data;
+  LocationPage(this.data);
+
   @override
   Widget build(BuildContext context) {
+    var locationCards = List<LocationListCard>();
+    for (var location in data) {
+      var newLocationCard = LocationListCard(location);
+      locationCards.add(newLocationCard);
+    }
     return Scaffold(
-      appBar: new AppBar(title: Text("Location"),
+      appBar: new AppBar(title: Text("Explore"),
         actions: <Widget>[ 
           IconButton(
             icon: Icon(
@@ -27,13 +32,7 @@ class LocationPage extends StatelessWidget {
       ),
       body: Center(
         child: ListView(
-          children: <Widget>[
-            TitleSection(),
-            AboutImage(),
-            TextSection(),
-            TextSection(),
-            TextSection(),
-          ],
+          children: locationCards
         ), 
       ),
     );

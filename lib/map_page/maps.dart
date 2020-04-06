@@ -9,10 +9,11 @@ import './location-card.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class MapPage extends StatefulWidget {
-  MapPage({Key key}) : super(key: key);
+  final List<Map<String, Object>> dataPointsCol;
+  MapPage(this.dataPointsCol);
 
   @override
-  _MapPageState createState() => _MapPageState();
+  _MapPageState createState() => _MapPageState(dataPointsCol);
 }
 
 class _MapPageState extends State<MapPage> {
@@ -59,6 +60,8 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
+  final List<Map<String, Object>> dataPointsCol;
+  _MapPageState(this.dataPointsCol);
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
@@ -100,12 +103,6 @@ class _MapPageState extends State<MapPage> {
     // print(position.longitude.toString()); 
   }
 
-  final sampleData = [
-    {"name": "Location 1", "description": "This is about location 1", "long": 38.766964, "lat": -90.489257},
-    {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
-    {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
-  ];
-
   final points = <LatLng>[];
 
   @override
@@ -113,16 +110,18 @@ class _MapPageState extends State<MapPage> {
 
     // For testing only 
     // TODO If user intersects with a polygon, pop up associated location page when notification is tapped
-    if(i == 0) {
+    /*if(i == 0) {
       showNotification(); 
     }
-    i++; 
+    i++; */
 
-    _showLocationCard(context, String name, String description){
-      showModalBottomSheet(context: context, builder: (BuildContext context) {
-        return LocationCard(name, description);
-      });
-    }
+    //_showLocationCard(context, String name, String description){
+      _showLocationCard(context, Map<String, Object> locData){
+        showModalBottomSheet(context: context, builder: (BuildContext context) {
+          return LocationCard(locData, dataPointsCol);
+        });
+      }
+    //}
 
     // TODO Create polygons for each location
     var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
@@ -159,8 +158,7 @@ class _MapPageState extends State<MapPage> {
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
-
-    for (var location in sampleData) {
+    for (var location in dataPointsCol) {
       // Create marker widget for each location
       var temp = new Marker(
           width: 45.0,
@@ -173,9 +171,8 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     // Print true or false if user is within specified coordinates square 
-                    print(inside([ 38.766974, -90.489245 ], polygon));
-                    // TODO Add card once tapped
-                    _showLocationCard(context, location["name"], location["description"]);
+                    // print(inside([ 38.766974, -90.489245 ], polygon));
+                    _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 
                 ),
