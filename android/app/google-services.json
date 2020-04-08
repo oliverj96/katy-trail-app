@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "385670904437",
+    "firebase_url": "https://katy-trail-app.firebaseio.com",
+    "project_id": "katy-trail-app",
+    "storage_bucket": "katy-trail-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385670904437:android:e7f951ee39fe8cb38e163c",
+        "android_client_info": {
+          "package_name": "com.example.katy_trail_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385670904437-80ukm0fv1d8g1br1ft1dfpnodata4ebp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3DYxS7d0tS7FUAo70uxLPL7EbdNFLa_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385670904437-80ukm0fv1d8g1br1ft1dfpnodata4ebp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -25,6 +25,7 @@ dependencies:
   google_maps_util:
   google_map_polyutil: ^1.0.0
   flutter_launcher_name: ^0.0.1
+  firebase_core: ^0.4.4+3
   
   # iOS Icons and Fonts
   cupertino_icons: ^0.1.2
