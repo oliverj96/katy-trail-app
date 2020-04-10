@@ -93,11 +93,22 @@ class _MapPageState extends State<MapPage> {
     return inside;
   }
 
-  // Get a user's current location and print longitude and latitude
-  Future getCurrentLocation() async {
+  double latitude = 0;
+  // Get a user's current latitude
+  Future getLatitude(double latitude) async {
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    String userPosition = (position.latitude.toString() + ", " +position.longitude.toString());
-    return userPosition; 
+    var lat = (position.latitude.toString()); // + ", " +position.longitude.toString()) as double;
+    this.latitude = double.parse(lat);
+    return latitude; 
+  }
+
+  double longitude = 0; 
+  // Get a user's current longitude
+  Future getLongitude(double longitude) async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var long = (position.longitude.toString()); // + ", " +position.longitude.toString()) as double;
+    this.longitude = double.parse(long);
+    return longitude; 
   }
 
   final points = <LatLng>[];
@@ -107,44 +118,47 @@ class _MapPageState extends State<MapPage> {
     
     // TODO If user intersects with a polygon, pop up associated location page when notification is tapped
 
-      _showLocationCard(context, Map<String, Object> locData){
-        showModalBottomSheet(context: context, builder: (BuildContext context) {
-          return LocationCard(locData, dataPointsCol);
-        });
-      }
+    _showLocationCard(context, Map<String, Object> locData){
+      showModalBottomSheet(context: context, builder: (BuildContext context) {
+        return LocationCard(locData, dataPointsCol);
+      });
+    }
 
-    // TODO Create polygons for each location
-    var polygon = [ [ 38.570242, -90.481205 ], [ 38.570524, -90.480341 ], [ 38.570290, -90.480191 ], [ 38.570116, -90.480930 ] ];
+    // TODO Create polygons for each location using algorithm 
+    var polygon = [ [ 38.679787, -90.444464 ], [ 38.679881, -90.444172 ], [ 38.679693, -90.444035 ], [ 38.679601, -90.444378 ] ];
     //var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
 
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
     getPoints(data);
-    //print(inside( [ getCurrentLocation() ], polygon));
+
     // Use to check if a user's current location is near a location's vicinity 
     bool isUserNearLocation = false;
     // Check user's current location every 3 seconds  
     // TODO Compare user's current location with all Katy Trail locations
-    //Timer.periodic(Duration(seconds: 3), (timer) {
+    Timer.periodic(Duration(seconds: 3), (timer) {
+
+      getLatitude(latitude); 
+      getLongitude(longitude);
       // TODO replace coordinates with user's current location
       // If user is inside a polygon and has not been inside polygon 
-      /*if (!inside( [ getCurrentLocation() ], polygon) && !isUserNearLocation) {
+      if (!inside( [ latitude, longitude ], polygon) && !isUserNearLocation) {
         isUserNearLocation = false; 
-        print("not inside the polygon");
-        //showNotification();
+        print("Made it to 1st if statement");
       }
       // If a user is inside a polygon and is near a location
-      else if (inside([ getCurrentLocation() ], polygon) && !isUserNearLocation) {
+      else if (inside([ latitude, longitude ], polygon) && !isUserNearLocation) {
         isUserNearLocation = true; 
+        print("Made it to 2nd if statement");
         // TODO pass in necessary information
         showNotification(); 
       }
       // If a user is inside a polygon and is not near a location
-      else if(inside([ getCurrentLocation() ], polygon) && isUserNearLocation) {
-        // Do nothing
-      } */
-    //});
+      else if(inside([ latitude, longitude ], polygon) && isUserNearLocation) {
+        print("Made it to 3rd if statement");
+      } 
+    });
 
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
@@ -161,9 +175,9 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
-                    showNotification();
+                    //showNotification();
                     // Print true or false if user is within specified coordinates square 
-                   // print(inside([ lat, long ], polygon));
+                    // print(inside([ 38.570249, -90.480863 ], polygon));
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 
