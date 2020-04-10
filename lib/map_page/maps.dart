@@ -125,13 +125,13 @@ class _MapPageState extends State<MapPage> {
             'accessToken': token,
             'id': 'mapbox.mapbox-streets-v7'
           }),
-          new PolylineLayerOptions(polylines: [
-            new Polyline(
-              points: points,
-              strokeWidth: 5.0,
-              color: Colors.blue,
-            )
-          ]),
+          // new PolylineLayerOptions(polylines: [
+          //   new Polyline(
+          //     points: points,
+          //     strokeWidth: 5.0,
+          //     color: Colors.blue,
+          //   )
+          // ]),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
       ),
