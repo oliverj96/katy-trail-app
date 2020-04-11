@@ -32,8 +32,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {  
   _MyHomePageState(){
-    bmHandler = BookmarkHandler('assets/docs/bookmarks.json');
-    var data = loadAsset('assets/docs/path.txt');
+    
+    // bmHandler = BookmarkHandler('assets/docs/bookmarks.json');
+    // var data = loadAsset('assets/docs/path.txt');
     // getPoints(data);
   }
 
