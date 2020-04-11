@@ -107,6 +107,7 @@ class _MapPageState extends State<MapPage> {
   Future getLongitude(double longitude) async {
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     var long = (position.longitude.toString()); // + ", " +position.longitude.toString()) as double;
+    print(long);
     this.longitude = double.parse(long);
     return longitude; 
   }
@@ -125,7 +126,7 @@ class _MapPageState extends State<MapPage> {
     }
 
     // TODO Create polygons for each location using algorithm 
-    var polygon = [ [ 38.679787, -90.444464 ], [ 38.679881, -90.444172 ], [ 38.679693, -90.444035 ], [ 38.679601, -90.444378 ] ];
+    var polygon = [ [ 38.679787, -90.444464 ], [ 38.679887, -90.444118 ], [ 38.679729, -90.443991 ], [ 38.679601, -90.444378 ] ];
     //var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
 
     // Build map path from file
@@ -175,9 +176,10 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
-                    //showNotification();
+                    showNotification();
                     // Print true or false if user is within specified coordinates square 
                     // print(inside([ 38.570249, -90.480863 ], polygon));
+                    getLongitude(longitude); 
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   }, 

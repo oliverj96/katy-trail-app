@@ -27,6 +27,7 @@ dependencies:
   flutter_launcher_name: ^0.0.1
   flutter_local_notifications: ^1.4.0
   path_provider: ^1.6.5
+  location_permissions: ^2.0.5
   
   # iOS Icons and Fonts
   cupertino_icons: ^0.1.2
