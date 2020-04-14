@@ -11,7 +11,7 @@ class LocationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 180,
       padding: EdgeInsets.fromLTRB(20,20,20,20),
         child: Column(
         children: <Widget>[
@@ -19,9 +19,9 @@ class LocationCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/location.png', height: 70, width: 70),
-                Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text("   " + locDetails["name"], 
+                Image.asset('assets/images/location.png', height: 50, width: 50),
+                Padding(padding: const EdgeInsets.only(top: 10.0),
+                    child: Text("   " + locDetails["name"], 
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
@@ -33,7 +33,8 @@ class LocationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text(locDetails["description"], 
+                  // description takes up to 41 characters 
+                    child: Text(locDetails["description"], 
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
