@@ -112,6 +112,24 @@ class _MapPageState extends State<MapPage> {
     return longitude; 
   }
 
+/*
+  checkDistance(userCurrentLat, userCurrentLong, dataLatLong) {
+    var radius = 0.0100; 
+    var latDistance = 0.0;
+    var longDistance = 0.0;
+    
+    //if this is on the maps file
+    for([location in dataPointsCol]) {  //this would go through all the points in the database coming in ["lat"] ["long"] 
+    latDistance = userCurrentLar - location["lat"]; 
+    longDistance = userCurrentlong - [location"long"];
+
+      if ( latDistance && longDistance <= radius) {
+          showNotification();  
+      }
+    }
+  }
+*/
+
   final points = <LatLng>[];
 
   @override
@@ -195,10 +213,6 @@ class _MapPageState extends State<MapPage> {
         'https://api.mapbox.com/styles/v1/ojohnson7cc/ck79a877u2ffj1jnn4dfgh3r9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWE0ZG5nMHIyaDNlcWh4cHd5N3I2bSJ9.L1xfay1JISdfIO1jDp8rTg';
     token =
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
-
-    // TODO: Get location and map onto the map
-    // var geolocator = Geolocator();
-    // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
 
     // Create Flutter Map Widget
     return Scaffold(
