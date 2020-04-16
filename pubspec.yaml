@@ -25,6 +25,9 @@ dependencies:
   google_maps_util:
   google_map_polyutil: ^1.0.0
   flutter_launcher_name: ^0.0.1
+  flutter_local_notifications: ^1.4.0
+  path_provider: ^1.6.5
+  location_permissions: ^2.0.5
   
   # iOS Icons and Fonts
   cupertino_icons: ^0.1.2
@@ -52,6 +55,7 @@ flutter:
     - assets/images/map.png
     - assets/images/location.png
     - assets/docs/path.txt
+    # - assets/docs/bookmarks.json
     # - assets/icon/icon.png //this is for adding the app's icon
 
   # An image asset can refer to one or more resolution-specific "variants", see

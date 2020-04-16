@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import '../location_page/LocationPage.dart';
+import '../location_page/ExplorePage.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class LocationCard extends StatelessWidget {
-  final String name;
-  final String description;
-
-  LocationCard(this.name, this.description);
+  final Map<String, Object> locDetails;
+  final List<Map<String, Object>> data;
+  final BookmarkHandler bmHandler;
+  LocationCard(this.locDetails, this.data, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 180,
       padding: EdgeInsets.fromLTRB(20,20,20,20),
         child: Column(
         children: <Widget>[
@@ -18,9 +20,9 @@ class LocationCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/location.png', height: 70, width: 70),
-                Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text("   " + name, 
+                Image.asset('assets/images/location.png', height: 50, width: 50),
+                Padding(padding: const EdgeInsets.only(top: 10.0),
+                    child: Text("   " + locDetails["name"], 
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
@@ -32,7 +34,8 @@ class LocationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text(description, 
+                  // description takes up to 41 characters 
+                    child: Text(locDetails["description"], 
                     style: TextStyle(fontSize: 16),
                   ),
                 ),
@@ -49,7 +52,7 @@ class LocationCard extends StatelessWidget {
                     onTap: (){
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LocationPage()),
+                      MaterialPageRoute(builder: (context) => ExplorePage(locDetails)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),
@@ -64,7 +67,7 @@ class LocationCard extends StatelessWidget {
                       Navigator.push(
                       context,
                       //TODO will push to BookmarkPage and add location to bookmarks
-                      MaterialPageRoute(builder: (context) => LocationPage()),
+                      MaterialPageRoute(builder: (context) => LocationPage(data, bmHandler)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0),
