@@ -40,11 +40,11 @@ class _MapPageState extends State<MapPage> {
     // Use payload for selecting specific location page 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => new LocationPage(dataPointsCol)),
+        MaterialPageRoute(builder: (context) => new LocationPage(dataPointsCol, bmHandler)),
       );
   }  
 
-  showNotification() async {
+  showNotification(Map<String, Object> locDetails) async {
     var android = new AndroidNotificationDetails(
       'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
       priority: Priority.High,importance: Importance.Max
@@ -53,8 +53,8 @@ class _MapPageState extends State<MapPage> {
     var platform = new NotificationDetails(android, iOS);
     await flutterLocalNotificationsPlugin.show(
       0, 
-      'Location 1', 
-      'Katy Trail Train Station', 
+      locDetails['name'], 
+      'Learn about this area!', 
       platform
     );
   }
@@ -120,14 +120,6 @@ class _MapPageState extends State<MapPage> {
           });
     }
 
-    // TODO Create polygons for each location
-    var polygon = [
-      [38.767002, -90.489269],
-      [38.766971, -90.489328],
-      [38.766922, -90.489235],
-      [38.766980, -90.489202]
-    ];
-
     // Check user's current location every 10 seconds
     // TODO Compare user's current location with all Katy Trail locations
     /*Timer.periodic(Duration(seconds: 30), (timer) {
@@ -183,7 +175,7 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
-                    showNotification();
+                    showNotification(location);
                     // Print true or false if user is within specified coordinates square 
                     // print(inside([ 38.570249, -90.480863 ], polygon));
                     getLongitude(longitude); 
@@ -218,13 +210,6 @@ class _MapPageState extends State<MapPage> {
             'accessToken': token,
             'id': 'mapbox.mapbox-streets-v7'
           }),
-          // new PolylineLayerOptions(polylines: [
-          //   new Polyline(
-          //     points: points,
-          //     strokeWidth: 5.0,
-          //     color: Colors.blue,
-          //   )
-          // ]),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
       ),
