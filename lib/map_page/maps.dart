@@ -1,12 +1,13 @@
+import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:katy_trail_app/location_page/LocationPage.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async';
 import './location-card.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../bookmark_page/bm_handler.dart';
 
 class MapPage extends StatefulWidget {
@@ -20,11 +21,68 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+  @override
+  void initState() {
+    super.initState();
+    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iOS = new IOSInitializationSettings();
+    var initSetttings = new InitializationSettings(android, iOS);
+    flutterLocalNotificationsPlugin.initialize(
+      initSetttings,
+      onSelectNotification: onSelectNotification
+    );
+  }
+
+  Future onSelectNotification(String payload) async {
+    // Use payload for selecting specific location page 
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => new LocationPage(dataPointsCol, bmHandler)),
+      );
+  }  
+
+  showNotification(Map<String, Object> locDetails) async {
+    var android = new AndroidNotificationDetails(
+      'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
+      priority: Priority.High,importance: Importance.Max
+    );
+    var iOS = new IOSNotificationDetails();
+    var platform = new NotificationDetails(android, iOS);
+    await flutterLocalNotificationsPlugin.show(
+      0, 
+      locDetails['name'], 
+      'Learn about this area!', 
+      platform
+    );
+  }
+
   // Data variables
   final List<Map<String, Object>> dataPointsCol;
   final points;
   final BookmarkHandler bmHandler;
   _MapPageState(this.dataPointsCol, this.points, this.bmHandler);
+
+  double latitude = 0;
+  // Get a user's current latitude
+  Future getLatitude(double latitude) async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var lat = (position.latitude.toString()); 
+    this.latitude = double.parse(lat);
+    return latitude; 
+  }
+
+  double longitude = 0; 
+  // Get a user's current longitude
+  Future getLongitude(double longitude) async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var long = (position.longitude.toString()); 
+    print(long);
+    this.longitude = double.parse(long);
+    return longitude; 
+  }
 
   // return true or false based on if user's location intersects with specified coordinates polygon
   bool inside(point, vs) {
@@ -52,7 +110,6 @@ class _MapPageState extends State<MapPage> {
     // print(position.longitude.toString());
   }
 
-
   @override
   Widget build(BuildContext context) {
     _showLocationCard(context, Map<String, Object> locData) {
@@ -62,14 +119,6 @@ class _MapPageState extends State<MapPage> {
             return LocationCard(locData, dataPointsCol, bmHandler);
           });
     }
-
-    // TODO Create polygons for each location
-    var polygon = [
-      [38.767002, -90.489269],
-      [38.766971, -90.489328],
-      [38.766922, -90.489235],
-      [38.766980, -90.489202]
-    ];
 
     // Check user's current location every 10 seconds
     // TODO Compare user's current location with all Katy Trail locations
@@ -82,6 +131,37 @@ class _MapPageState extends State<MapPage> {
     // var data = loadAsset('assets/docs/path.txt');
     // getPoints(data);
 
+    // Use to check if a user's current location is near a location's vicinity 
+    bool isUserNearLocation = false;
+    
+    /*// TODO Compare user's current location with all Katy Trail locations
+    // Check user's current location every 3 seconds 
+    Timer.periodic(Duration(seconds: 3), (timer) {
+
+      getLatitude(latitude); 
+      getLongitude(longitude);
+      // TODO replace coordinates with user's current location
+      // If user is inside a polygon and has not been inside polygon 
+      if (!inside( [ latitude, longitude ], polygon) && !isUserNearLocation) {
+        isUserNearLocation = false; 
+        print("Made it to 1st if statement");
+      }
+      // If a user is inside a polygon and is near a location
+      else if (inside([ latitude, longitude ], polygon) && !isUserNearLocation) {
+        isUserNearLocation = true; 
+        print("Made it to 2nd if statement");
+        // TODO pass in necessary information
+        showNotification(); 
+      }
+      // If a user is inside a polygon and is not near a location
+      else if(inside([ latitude, longitude ], polygon) && isUserNearLocation) {
+        print("Made it to 3rd if statement");
+      } 
+    });
+    */
+
+    // Dynamically add markers to List
+    // TODO Once firebase is integrated, change sample data to pulled data
     var locationPlaces = List<Marker>();
     for (var location in dataPointsCol) {
       // Create marker widget for each location
@@ -95,6 +175,10 @@ class _MapPageState extends State<MapPage> {
                   color: Colors.red,
                   iconSize: 45.0,
                   onPressed: () {
+                    showNotification(location);
+                    // Print true or false if user is within specified coordinates square 
+                    // print(inside([ 38.570249, -90.480863 ], polygon));
+                    getLongitude(longitude); 
                     // Print true or false if user is within specified coordinates square
                     // print(inside([ 38.766974, -90.489245 ], polygon));
                     _showLocationCard(context, location);
@@ -113,10 +197,6 @@ class _MapPageState extends State<MapPage> {
     token =
         'sk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWp2cnNqMHUydzNlcWtxd2R4c2JncCJ9.keCK6gFmt7EO9Ug4GwC_jg';
 
-    // TODO: Get location and map onto the map
-    // var geolocator = Geolocator();
-    // var locationOptions = LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-
     // Create Flutter Map Widget
     return Scaffold(
       appBar: new AppBar(
@@ -130,13 +210,6 @@ class _MapPageState extends State<MapPage> {
             'accessToken': token,
             'id': 'mapbox.mapbox-streets-v7'
           }),
-          // new PolylineLayerOptions(polylines: [
-          //   new Polyline(
-          //     points: points,
-          //     strokeWidth: 5.0,
-          //     color: Colors.blue,
-          //   )
-          // ]),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
       ),

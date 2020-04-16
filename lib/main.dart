@@ -7,6 +7,7 @@ import './bookmark_page/bm_handler.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -72,5 +73,5 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: PageStorage(child: currentScreen, bucket: bucket),
     );
-  }
+ } //uncomment after showing push notifications example
 }
