@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -5,21 +7,24 @@ import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import './location-card.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class MapPage extends StatefulWidget {
   final List<Map<String, Object>> dataPointsCol;
   final points;
-  MapPage(this.dataPointsCol, this.points);
+  final BookmarkHandler bmHandler;
+  MapPage(this.dataPointsCol, this.points, this.bmHandler);
 
   @override
-  _MapPageState createState() => _MapPageState(dataPointsCol, points);
+  _MapPageState createState() => _MapPageState(dataPointsCol, points, bmHandler);
 }
 
 class _MapPageState extends State<MapPage> {
   // Data variables
   final List<Map<String, Object>> dataPointsCol;
   final points;
-  _MapPageState(this.dataPointsCol, this.points);
+  final BookmarkHandler bmHandler;
+  _MapPageState(this.dataPointsCol, this.points, this.bmHandler);
 
   // return true or false based on if user's location intersects with specified coordinates polygon
   bool inside(point, vs) {
@@ -54,7 +59,7 @@ class _MapPageState extends State<MapPage> {
       showModalBottomSheet(
           context: context,
           builder: (BuildContext context) {
-            return LocationCard(locData, dataPointsCol);
+            return LocationCard(locData, dataPointsCol, bmHandler);
           });
     }
 

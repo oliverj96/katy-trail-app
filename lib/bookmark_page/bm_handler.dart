@@ -10,15 +10,19 @@ class BookmarkHandler {
    * to other widgets where needed (such as add to bookmark)
    */
 
-  //https://medium.com/flutter-community/how-to-parse-json-in-flutter-for-beginners-8074a68d7a79
-  //https://flutter.dev/docs/cookbook/persistence/reading-writing-files
   static Future<File> ffile;
-  BookmarkHandler(){
-    // TODO Initialize JSON file
-    // print(json);
+  static File jsonFile;
+  var bmData = List<Map<String, Object>>();
+
+  BookmarkHandler() {
+    // Get JSON file
     ffile = _localFile;
-    // print(jsonFile);
-    // json.
+  }
+
+  void initializeBM() async {
+    var file = await ffile;
+
+    print(file);
   }
 
   // Load Asset for Future Data Parsing
@@ -26,6 +30,7 @@ class BookmarkHandler {
     final directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
+
   Future<File> get _localFile async {
     final path = await _localPath;
     return File('$path/bookmarks.json');
@@ -34,9 +39,34 @@ class BookmarkHandler {
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
   }
-  bool isBookmarked(){}
 
-  void AddBookmark(){}
+  bool isBookmarked(Map<String, Object> loc) {
+    for (var location in bmData) {
+      if (location["name"] == loc["name"]){
+        return true;
+      }
+    }
+    return false;
+  }
 
-  void RemoveBookmark(){}
+  void AddBookmark(Map<String, Object> loc) async {
+    // convert loc to json
+    var jsonData = json.encode(loc);
+    // write json to file
+    var file = await ffile;
+    file.writeAsStringSync(jsonData);
+    bmData.add(loc);
+  }
+
+
+
+  void RemoveBookmark(Map<String, Object> loc) {
+    bmData.remove(loc);
+  }
+
+  List<Map<String, Object>> getBookmarks() {
+    // initializeJson();
+    return bmData;
+    // return bmData;
+  }
 }

@@ -4,12 +4,14 @@ import './map.dart';
 import './explore.dart';
 import './about.dart';
 import '../about_page/AboutPage.dart';
-import '../bookmark_page/bookmarks.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class HomePage extends StatelessWidget {
   final List<Map<String, Object>> data;
+  final BookmarkHandler bmHandler;
+  
   final points;
-  HomePage(this.data, this.points);
+  HomePage(this.data, this.points, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => new Bookmarks()),
+                MaterialPageRoute(builder: (context) => new Bookmarks(bmHandler)),
               );
             },
           ),
@@ -34,8 +36,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             
-            MapW(data, points),
-            Explore(data),
+            MapW(data, points, bmHandler),
+            Explore(data, bmHandler),
             About(),
             
           ],

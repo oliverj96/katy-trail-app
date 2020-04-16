@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../location_page/LocationPage.dart';
 import '../location_page/ExplorePage.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class LocationCard extends StatelessWidget {
   final Map<String, Object> locDetails;
   final List<Map<String, Object>> data;
-
-  LocationCard(this.locDetails, this.data);
+  final BookmarkHandler bmHandler;
+  LocationCard(this.locDetails, this.data, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class LocationCard extends StatelessWidget {
                       Navigator.push(
                       context,
                       //TODO will push to BookmarkPage and add location to bookmarks
-                      MaterialPageRoute(builder: (context) => LocationPage(data)),
+                      MaterialPageRoute(builder: (context) => LocationPage(data, bmHandler)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0),

@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   static List<LatLng> points = <LatLng>[];
-  static BookmarkHandler bmHandler;
+  static BookmarkHandler bmHandler = BookmarkHandler();
   // Load Asset for Future Data Parsing
   Future<String> loadAsset(String path) async {
     return await rootBundle.loadString(path);
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     {"name": "Daniel Boone Judgment Tree", "description": "This is about location 3", "long": 38.608879, "lat": -90.794029},
   ];
 
-  Widget currentScreen = HomePage(sampleData, points);
+  Widget currentScreen = HomePage(sampleData, points, bmHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
   //@override
