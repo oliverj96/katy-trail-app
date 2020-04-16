@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:katy_trail_app/location_page/LocationPage.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import '../about_page/AboutPage.dart';
 import './location-card.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -35,12 +35,11 @@ class _MapPageState extends State<MapPage> {
 
   Future onSelectNotification(String payload) async {
     // Use payload for selecting specific location page 
-    debugPrint("payload : $payload");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => new AboutPage()),
+        MaterialPageRoute(builder: (context) => new LocationPage(dataPointsCol)),
       );
-  }
+  }  
 
   showNotification() async {
     var android = new AndroidNotificationDetails(
@@ -74,30 +73,11 @@ class _MapPageState extends State<MapPage> {
     });
   }
 
-  // return true or false based on if user's location intersects with specified coordinates polygon
-  bool inside(point, vs) {
-    // Ray-casting algorithm based on
-    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
-    var x = point[0], y = point[1];
-
-    var inside = false;
-    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
-        var xi = vs[i][0], yi = vs[i][1];
-        var xj = vs[j][0], yj = vs[j][1];
-
-        var intersect = ((yi > y) != (yj > y))
-            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-        if (intersect) inside = !inside;
-    }
-
-    return inside;
-  }
-
   double latitude = 0;
   // Get a user's current latitude
   Future getLatitude(double latitude) async {
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    var lat = (position.latitude.toString()); // + ", " +position.longitude.toString()) as double;
+    var lat = (position.latitude.toString()); 
     this.latitude = double.parse(lat);
     return latitude; 
   }
@@ -106,7 +86,7 @@ class _MapPageState extends State<MapPage> {
   // Get a user's current longitude
   Future getLongitude(double longitude) async {
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    var long = (position.longitude.toString()); // + ", " +position.longitude.toString()) as double;
+    var long = (position.longitude.toString()); 
     print(long);
     this.longitude = double.parse(long);
     return longitude; 
@@ -118,16 +98,14 @@ class _MapPageState extends State<MapPage> {
     var latDistance = 0.0;
     var longDistance = 0.0;
     
-    //if this is on the maps file
-    for([location in dataPointsCol]) {  //this would go through all the points in the database coming in ["lat"] ["long"] 
-    latDistance = userCurrentLar - location["lat"]; 
-    longDistance = userCurrentlong - [location"long"];
+    for(location in dataPointsCol) {  //this would go through all the points in the database coming in ["lat"] ["long"] 
+      latDistance = (userCurrentLat - location["lat"]).abs(); 
+      longDistance = (userCurrentlong - location["long"]).abs();
 
-      if ( latDistance && longDistance <= radius) {
-          showNotification();  
+      if ((latDistance <= distance) && (longDistance <= distance) {
+        showNotification(); 
       }
-    }
-  }
+    } 
 */
 
   final points = <LatLng>[];
@@ -143,10 +121,6 @@ class _MapPageState extends State<MapPage> {
       });
     }
 
-    // TODO Create polygons for each location using algorithm 
-    var polygon = [ [ 38.679787, -90.444464 ], [ 38.679887, -90.444118 ], [ 38.679729, -90.443991 ], [ 38.679601, -90.444378 ] ];
-    //var polygon = [ [ 38.767002, -90.489269 ], [ 38.766971, -90.489328 ], [ 38.766922, -90.489235 ], [ 38.766980, -90.489202 ] ];
-
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
     var data = loadAsset('assets/docs/path.txt');
@@ -154,8 +128,9 @@ class _MapPageState extends State<MapPage> {
 
     // Use to check if a user's current location is near a location's vicinity 
     bool isUserNearLocation = false;
-    // Check user's current location every 3 seconds  
-    // TODO Compare user's current location with all Katy Trail locations
+    
+    /*// TODO Compare user's current location with all Katy Trail locations
+    // Check user's current location every 3 seconds 
     Timer.periodic(Duration(seconds: 3), (timer) {
 
       getLatitude(latitude); 
@@ -178,6 +153,7 @@ class _MapPageState extends State<MapPage> {
         print("Made it to 3rd if statement");
       } 
     });
+    */
 
     // Dynamically add markers to List
     // TODO Once firebase is integrated, change sample data to pulled data
