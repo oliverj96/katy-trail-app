@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './home_page/homepage.dart';
+import 'package:latlong/latlong.dart';
+import './bookmark_page/bm_handler.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,13 +32,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {  
+  _MyHomePageState(){
+    
+    // bmHandler = BookmarkHandler('assets/docs/bookmarks.json');
+    // var data = loadAsset('assets/docs/path.txt');
+    // getPoints(data);
+  }
+
+  static List<LatLng> points = <LatLng>[];
+  static BookmarkHandler bmHandler = BookmarkHandler();
+  // Load Asset for Future Data Parsing
+  Future<String> loadAsset(String path) async {
+    return await rootBundle.loadString(path);
+  }
+
+  Future getPoints(Future<String> data) async {
+    return await data.then((dataPoints) {
+      var dump = dataPoints.split(' ');
+      for (var i = 0; i < dump.length - 2; i += 2) {
+        var newPoint =
+            new LatLng(double.parse(dump[i]), double.parse(dump[i + 1]));
+        points.add(newPoint);
+      }
+    });
+  }
+
   static var sampleData = [
-    {"name": "Location 1", "description": "This is about location 1 and cheese", "long": 38.766964, "lat": -90.489257},
-    {"name": "Location 2", "description": "This is about location 2", "long": 38.794659, "lat": -90.474353},
-    {"name": "Location 3", "description": "This is about location 3", "long": 38.800099, "lat": -90.470506},
+    {"name": "Missouri’s first capitol", "description": "This is about location 1 and cheese", "long": 38.780073, "lat": -90.481848},
+    {"name": "Masonic Hall 1849", "description": "This is about location 2", "long": 38.780621, "lat": -90.481401},
+    {"name": "Daniel Boone Burial Site", "description": "This is about location 3", "long": 38.621592, "lat": -91.034315},
+    {"name": "Peers Store", "description": "This is about location 3", "long": 38.634266, "lat": -91.122865},
+    {"name": "Daniel Boone Judgment Tree", "description": "This is about location 3", "long": 38.608879, "lat": -90.794029},
   ];
 
-  Widget currentScreen = HomePage(sampleData);
+  Widget currentScreen = HomePage(sampleData, points, bmHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
   //@override

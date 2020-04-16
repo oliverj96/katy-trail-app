@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -7,17 +8,19 @@ import 'package:latlong/latlong.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import './location-card.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class MapPage extends StatefulWidget {
   final List<Map<String, Object>> dataPointsCol;
-  MapPage(this.dataPointsCol);
+  final points;
+  final BookmarkHandler bmHandler;
+  MapPage(this.dataPointsCol, this.points, this.bmHandler);
 
   @override
-  _MapPageState createState() => _MapPageState(dataPointsCol);
+  _MapPageState createState() => _MapPageState(dataPointsCol, points, bmHandler);
 }
 
 class _MapPageState extends State<MapPage> {
-
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
@@ -56,22 +59,11 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
+  // Data variables
   final List<Map<String, Object>> dataPointsCol;
-  _MapPageState(this.dataPointsCol);
-  Future<String> loadAsset(String path) async {
-    return await rootBundle.loadString(path);
-  }
-
-  Future getPoints(Future<String> data) async {
-    return await data.then((dataPoints) {
-      var dump = dataPoints.split(' ');
-      for (var i = 0; i < dump.length - 2; i += 2) {
-        var newPoint =
-            new LatLng(double.parse(dump[i]), double.parse(dump[i + 1]));
-        points.add(newPoint);
-      }
-    });
-  }
+  final points;
+  final BookmarkHandler bmHandler;
+  _MapPageState(this.dataPointsCol, this.points, this.bmHandler);
 
   double latitude = 0;
   // Get a user's current latitude
@@ -92,39 +84,60 @@ class _MapPageState extends State<MapPage> {
     return longitude; 
   }
 
-/*
-  checkDistance(userCurrentLat, userCurrentLong, dataLatLong) {
-    var radius = 0.0100; 
-    var latDistance = 0.0;
-    var longDistance = 0.0;
-    
-    for(location in dataPointsCol) {  //this would go through all the points in the database coming in ["lat"] ["long"] 
-      latDistance = (userCurrentLat - location["lat"]).abs(); 
-      longDistance = (userCurrentlong - location["long"]).abs();
+  // return true or false based on if user's location intersects with specified coordinates polygon
+  bool inside(point, vs) {
+    // Ray-casting algorithm based on
+    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+    var x = point[0], y = point[1];
 
-      if ((latDistance <= distance) && (longDistance <= distance) {
-        showNotification(); 
-      }
-    } 
-*/
+    var inside = false;
+    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+      var xi = vs[i][0], yi = vs[i][1];
+      var xj = vs[j][0], yj = vs[j][1];
 
-  final points = <LatLng>[];
+      var intersect =
+          ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+    }
+
+    return inside;
+  }
+
+  // Get a user's current location and print longitude and latitude
+  Future getCurrentLocation() async {
+    // Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    // print(position.latitude.toString()+ " ");
+    // print(position.longitude.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    // TODO If user intersects with a polygon, pop up associated location page when notification is tapped
-
-    _showLocationCard(context, Map<String, Object> locData){
-      showModalBottomSheet(context: context, builder: (BuildContext context) {
-        return LocationCard(locData, dataPointsCol);
-      });
+    _showLocationCard(context, Map<String, Object> locData) {
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return LocationCard(locData, dataPointsCol, bmHandler);
+          });
     }
+
+    // TODO Create polygons for each location
+    var polygon = [
+      [38.767002, -90.489269],
+      [38.766971, -90.489328],
+      [38.766922, -90.489235],
+      [38.766980, -90.489202]
+    ];
+
+    // Check user's current location every 10 seconds
+    // TODO Compare user's current location with all Katy Trail locations
+    /*Timer.periodic(Duration(seconds: 30), (timer) {
+      getCurrentLocation();
+    });*/
 
     // Build map path from file
     // TODO Fix bug: path isn't drawn until build update
-    var data = loadAsset('assets/docs/path.txt');
-    getPoints(data);
+    // var data = loadAsset('assets/docs/path.txt');
+    // getPoints(data);
 
     // Use to check if a user's current location is near a location's vicinity 
     bool isUserNearLocation = false;
@@ -174,9 +187,11 @@ class _MapPageState extends State<MapPage> {
                     // Print true or false if user is within specified coordinates square 
                     // print(inside([ 38.570249, -90.480863 ], polygon));
                     getLongitude(longitude); 
+                    // Print true or false if user is within specified coordinates square
+                    // print(inside([ 38.766974, -90.489245 ], polygon));
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
-                  }, 
+                  },
                 ),
               ));
       // Append location to list of places
@@ -203,13 +218,13 @@ class _MapPageState extends State<MapPage> {
             'accessToken': token,
             'id': 'mapbox.mapbox-streets-v7'
           }),
-          new PolylineLayerOptions(polylines: [
-            new Polyline(
-              points: points,
-              strokeWidth: 5.0,
-              color: Colors.blue,
-            )
-          ]),
+          // new PolylineLayerOptions(polylines: [
+          //   new Polyline(
+          //     points: points,
+          //     strokeWidth: 5.0,
+          //     color: Colors.blue,
+          //   )
+          // ]),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
       ),
