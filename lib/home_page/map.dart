@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import '../map_page/maps.dart';
+import '../bookmark_page/bm_handler.dart';
 
 class MapW extends StatelessWidget {
   final List<Map<String, Object>> data;
-  const MapW(this.data);
+  final points;
+  final BookmarkHandler bmHandler;
+  const MapW(this.data, this.points, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class MapW extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage(data)),
+                  MaterialPageRoute(builder: (context) => MapPage(data, points, bmHandler)),
                 );
               },
               leading: Container(
