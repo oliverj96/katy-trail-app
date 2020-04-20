@@ -58,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   static var sampleData = [
-    {"name": "Missouri’s first capitol", "description": "This is about location 1 and cheese", "long": 38.780073, "lat": -90.481848},
-    {"name": "Masonic Hall 1849", "description": "This is about location 2", "long": 38.780621, "lat": -90.481401},
-    {"name": "Daniel Boone Burial Site", "description": "This is about location 3", "long": 38.621592, "lat": -91.034315},
-    {"name": "Peers Store", "description": "This is about location 3", "long": 38.634266, "lat": -91.122865},
-    {"name": "Daniel Boone Judgment Tree", "description": "This is about location 3", "long": 38.608879, "lat": -90.794029},
+    {"name": "Missouri’s first capitol", "description": "Missouri's capitol from 1821-1826", "long": 38.780073, "lat": -90.481848},
+    {"name": "Masonic Hall 1849", "description": "Used for local Masons Lodge to meet", "long": 38.780621, "lat": -90.481401},
+    {"name": "Daniel Boone Burial Site", "description": "Monument and burial site of Daniel Boone", "long": 38.621592, "lat": -91.034315},
+    {"name": "Peers Store", "description": "Historic general store for travelers", "long": 38.634266, "lat": -91.122865},
+    {"name": "Daniel Boone Judgment Tree", "description": "Served as Boone's courthouse", "long": 38.608879, "lat": -90.794029},
   ];
 
   Widget currentScreen = HomePage(sampleData, points, bmHandler);
