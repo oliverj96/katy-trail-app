@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:geolocator/geolocator.dart';
 import './home_page/homepage.dart';
 import 'package:latlong/latlong.dart';
 import './bookmark_page/bm_handler.dart';
+import 'location_page/ExplorePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +43,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // getPoints(data);
   }
 
+  double latitude = 0;
+  // Get a user's current latitude
+  Future getLatitude(double latitude) async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var lat = (position.latitude.toString()); 
+    print(lat);
+    this.latitude = double.parse(lat);
+    return latitude; 
+  }
+
+  double longitude = 0; 
+  // Get a user's current longitude
+  Future getLongitude(double longitude) async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    var long = (position.longitude.toString()); 
+    print(long);
+    this.longitude = double.parse(long);
+    return longitude; 
+  }
+
   static List<LatLng> points = <LatLng>[];
   static BookmarkHandler bmHandler = BookmarkHandler();
   // Load Asset for Future Data Parsing
@@ -70,6 +94,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //@override
   Widget build(BuildContext context) {
+
+  // Check user's current location every 2 seconds 
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      getLatitude(latitude); 
+      getLongitude(longitude);
+      //checkDistance(latitude, longitude);
+    });
+
     return Scaffold(
       body: PageStorage(child: currentScreen, bucket: bucket),
     );
