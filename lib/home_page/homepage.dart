@@ -3,15 +3,13 @@ import '../bookmark_page/bookmarks.dart';
 import './map.dart';
 import './explore.dart';
 import './about.dart';
-import '../about_page/AboutPage.dart';
 import '../bookmark_page/bm_handler.dart';
 
 class HomePage extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;
   
-  final points;
-  HomePage(this.data, this.points, this.bmHandler);
+  HomePage(this.data, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             
-            MapW(data, points, bmHandler),
+            MapW(data, bmHandler),
             Explore(data, bmHandler),
             About(),
             

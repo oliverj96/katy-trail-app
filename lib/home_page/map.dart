@@ -4,9 +4,8 @@ import '../bookmark_page/bm_handler.dart';
 
 class MapW extends StatelessWidget {
   final List<Map<String, Object>> data;
-  final points;
   final BookmarkHandler bmHandler;
-  const MapW(this.data, this.points, this.bmHandler);
+  const MapW(this.data, this.bmHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class MapW extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage(data, points, bmHandler)),
+                  MaterialPageRoute(builder: (context) => MapPage(data, bmHandler)),
                 );
               },
               leading: Container(
