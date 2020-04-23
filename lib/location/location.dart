@@ -1,62 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import './home_page/homepage.dart';
-import 'package:latlong/latlong.dart';
-import './bookmark_page/bm_handler.dart';
+class Locations{
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    return MaterialApp(       
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Katy Trail App'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {  
-  _MyHomePageState(){
-    
-    // bmHandler = BookmarkHandler('assets/docs/bookmarks.json');
-    // var data = loadAsset('assets/docs/path.txt');
-    // getPoints(data);
-  }
-
-  static List<LatLng> points = <LatLng>[];
-  static BookmarkHandler bmHandler = BookmarkHandler();
-  // Load Asset for Future Data Parsing
-  Future<String> loadAsset(String path) async {
-    return await rootBundle.loadString(path);
-  }
-
-  Future getPoints(Future<String> data) async {
-    return await data.then((dataPoints) {
-      var dump = dataPoints.split(' ');
-      for (var i = 0; i < dump.length - 2; i += 2) {
-        var newPoint =
-            new LatLng(double.parse(dump[i]), double.parse(dump[i + 1]));
-        points.add(newPoint);
-      }
-    });
-  }
-
+  
   static var sampleData = [
     {
     "name": "Missouri’s First Capitol",
@@ -112,15 +56,4 @@ class _MyHomePageState extends State<MyHomePage> {
      },
 
   ];
-
-  Widget currentScreen = HomePage(sampleData, points, bmHandler);
-  final PageStorageBucket bucket = PageStorageBucket();
-
-  //@override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageStorage(child: currentScreen, bucket: bucket),
-    );
- } //uncomment after showing push notifications example
 }
-
