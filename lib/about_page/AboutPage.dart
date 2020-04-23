@@ -14,7 +14,7 @@ class AboutPage extends StatelessWidget {
             TitleSection(),
             AboutImage(),
             TextSection(),
-            TextSection(),
+            
           ],
         ),
       ),
