@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:katy_trail_app/push_handler.dart';
 import '../bookmark_page/bookmarks.dart';
 import './map.dart';
 import './explore.dart';
@@ -8,8 +9,8 @@ import '../bookmark_page/bm_handler.dart';
 class HomePage extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;
-  
-  HomePage(this.data, this.bmHandler);
+  final PushHandler pushHandler;
+  HomePage(this.data, this.bmHandler, this.pushHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             
-            MapW(data, bmHandler),
+            MapW(data, bmHandler, pushHandler),
             Explore(data, bmHandler),
             About(),
             

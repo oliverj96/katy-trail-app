@@ -35,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static BookmarkHandler _bmHandler = BookmarkHandler();
-  PushHandler _pushHandler = PushHandler(sampleData);
+  static PushHandler _pushHandler = PushHandler(sampleData);
 
   @override
   void initState() {
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
     },
   ];
 
-  Widget currentScreen = HomePage(sampleData, _bmHandler);
+  Widget currentScreen = HomePage(sampleData, _bmHandler, _pushHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
   //@override

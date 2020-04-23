@@ -4,10 +4,13 @@ import 'package:latlong/latlong.dart';
 import './location-card.dart';
 import '../bookmark_page/bm_handler.dart';
 
+import '../push_handler.dart';
+
 class MapPage extends StatefulWidget {
   final List<Map<String, Object>> dataPointsCol;
   final BookmarkHandler bmHandler;
-  MapPage(this.dataPointsCol, this.bmHandler);
+  final PushHandler pushHandler;
+  MapPage(this.dataPointsCol, this.bmHandler, this.pushHandler);
   @override
   _MapPageState createState() => _MapPageState();
 }
@@ -39,6 +42,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     //locationData = location;
+                    // widget.pushHandler.showNotification(location);
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   },
