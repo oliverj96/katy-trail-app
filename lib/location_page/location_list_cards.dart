@@ -15,13 +15,13 @@ class _LocationListCardState extends State<LocationListCard> {
 
   void addBM(){
     setState(() {
-      widget.bmHandler.AddBookmark(widget.locDetails);
+      widget.bmHandler.addBookmark(widget.locDetails);
     });
   }
 
   void removeBM(){
     setState(() {
-      widget.bmHandler.RemoveBookmark(widget.locDetails);
+      widget.bmHandler.removeBookmark(widget.locDetails);
     });
   }
 

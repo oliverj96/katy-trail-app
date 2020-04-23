@@ -66,7 +66,6 @@ class LocationCard extends StatelessWidget {
                     onTap: (){
                       Navigator.push(
                       context,
-                      //TODO will push to BookmarkPage and add location to bookmarks
                       MaterialPageRoute(builder: (context) => LocationPage(data, bmHandler)),
                       );
                     },

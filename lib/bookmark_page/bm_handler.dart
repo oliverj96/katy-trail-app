@@ -49,7 +49,7 @@ class BookmarkHandler {
     return false;
   }
 
-  void AddBookmark(Map<String, Object> loc) async {
+  void addBookmark(Map<String, Object> loc) async {
     // convert loc to json
     var jsonData = json.encode(loc);
     // write json to file
@@ -60,7 +60,7 @@ class BookmarkHandler {
 
 
 
-  void RemoveBookmark(Map<String, Object> loc) {
+  void removeBookmark(Map<String, Object> loc) {
     bmData.remove(loc);
   }
 

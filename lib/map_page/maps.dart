@@ -1,12 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:katy_trail_app/location_page/LocationPage.dart';
 import 'package:latlong/latlong.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import '../location_page/ExplorePage.dart';
 import './location-card.dart';
-
 import '../bookmark_page/bm_handler.dart';
 
 class MapPage extends StatefulWidget {

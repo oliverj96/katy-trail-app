@@ -37,22 +37,17 @@ class _MyHomePageState extends State<MyHomePage> {
   static BookmarkHandler _bmHandler = BookmarkHandler();
   PushHandler _pushHandler = PushHandler(sampleData);
 
-  _MyHomePageState() {
-    // _pushHandler = PushHandler(sampleData);
-    // _bmHandler = BookmarkHandler();
+  @override
+  void initState() {
+    super.initState();
+    _pushHandler.flutterLocalNotificationsPlugin =
+        new FlutterLocalNotificationsPlugin();
+    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iOS = new IOSInitializationSettings();
+    var initSetttings = new InitializationSettings(android, iOS);
+    _pushHandler.flutterLocalNotificationsPlugin
+        .initialize(initSetttings, onSelectNotification: onSelectNotification);
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _pushHandler.flutterLocalNotificationsPlugin =
-  //       new FlutterLocalNotificationsPlugin();
-  //   var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
-  //   var iOS = new IOSInitializationSettings();
-  //   var initSetttings = new InitializationSettings(android, iOS);
-  //   _pushHandler.flutterLocalNotificationsPlugin
-  //       .initialize(initSetttings, onSelectNotification: onSelectNotification);
-  // }
 
   Future onSelectNotification(String payload) async {
     // Use payload for selecting specific location page
@@ -101,12 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
   //@override
   Widget build(BuildContext context) {
     // Check user's current location every 2 seconds
-    // Timer.periodic(Duration(seconds: 2), (timer) {
-    //   // getPosition();
-    //   _pushHandler.getPosition();
-    //   // checkDistance(latitude, longitude);
-    //   _pushHandler.checkDistance();
-    // });
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      _pushHandler.getPosition();
+      _pushHandler.checkDistance();
+    });
 
     return Scaffold(
       body: PageStorage(child: currentScreen, bucket: bucket),
