@@ -60,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static var sampleData = [
     {
       "name": "Missouri’s first capitol",
-      "description": "This is about location 1 and cheese",
-      "long": 38.780073,
+      "description": "This is about location 1",
+      "long": 38.780073, 
       "lat": -90.481848
     },
     {
@@ -73,18 +73,18 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       "name": "Daniel Boone Burial Site",
       "description": "This is about location 3",
-      "long": 38.621592,
+      "long": 38.621592, 
       "lat": -91.034315
     },
     {
       "name": "Peers Store",
-      "description": "This is about location 3",
+      "description": "This is about location 4",
       "long": 38.634266,
       "lat": -91.122865
     },
     {
       "name": "Daniel Boone Judgment Tree",
-      "description": "This is about location 3",
+      "description": "This is about location 5",
       "long": 38.608879,
       "lat": -90.794029
     },

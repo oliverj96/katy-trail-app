@@ -43,7 +43,7 @@ class PushHandler {
 
   // Use to check if a user's current location is near a location's vicinity
   checkDistance() {
-    var distance = 0.0001;
+    var distance = 0.006;
     var latDistance = 0.0;
     var longDistance = 0.0;
     print(_longitude);

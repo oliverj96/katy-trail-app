@@ -42,7 +42,7 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     //locationData = location;
-                    // widget.pushHandler.showNotification(location);
+                    widget.pushHandler.showNotification(location);
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   },
@@ -63,7 +63,7 @@ class _MapPageState extends State<MapPage> {
       ),
       body: FlutterMap(
         options: new MapOptions(
-            center: new LatLng(38.77699, -90.482418), maxZoom: 10.0),
+            center: new LatLng(38.77699, -90.482418), maxZoom: 10),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
             'accessToken': token,
