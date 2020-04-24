@@ -3,7 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import './location-card.dart';
 import '../bookmark_page/bm_handler.dart';
-
 import '../push_handler.dart';
 
 class MapPage extends StatefulWidget {
@@ -16,9 +15,28 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  // Data variables
+
+  double _longitude = 0.0; 
+  double _latitude = 0.0; 
+
+  void _getAverageLocation() {
+    for (var location in widget.dataPointsCol) {
+      _latitude += location["lat"];
+      _longitude += location["long"];
+    }
+    _latitude /= 5;
+    _longitude /= 5;
+  }
+
+  @override
+  void initState() {
+    _getAverageLocation();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     _showLocationCard(context, Map<String, Object> locData) {
       showModalBottomSheet(
           context: context,
@@ -27,7 +45,7 @@ class _MapPageState extends State<MapPage> {
                 locData, widget.dataPointsCol, widget.bmHandler);
           });
     }
-
+ 
     var locationPlaces = List<Marker>();
     for (var location in widget.dataPointsCol) {
       // Create marker widget for each location
@@ -42,15 +60,16 @@ class _MapPageState extends State<MapPage> {
                   iconSize: 45.0,
                   onPressed: () {
                     //locationData = location;
-                    widget.pushHandler.showNotification(location);
+                    //widget.pushHandler.showNotification(location);
                     _showLocationCard(context, location);
                     print("Location: " + location["name"] + " was tapped.");
                   },
                 ),
               ));
       // Append location to list of places
-      locationPlaces.add(temp);
+      locationPlaces.add(temp);   
     }
+
     var url =
         'https://api.mapbox.com/styles/v1/ojohnson7cc/ck79a877u2ffj1jnn4dfgh3r9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoib2pvaG5zb243Y2MiLCJhIjoiY2s3OWE0ZG5nMHIyaDNlcWh4cHd5N3I2bSJ9.L1xfay1JISdfIO1jDp8rTg';
     var token =
@@ -63,7 +82,8 @@ class _MapPageState extends State<MapPage> {
       ),
       body: FlutterMap(
         options: new MapOptions(
-            center: new LatLng(38.77699, -90.482418), maxZoom: 10),
+            center: new LatLng(_longitude, _latitude), maxZoom: 10),
+            //center: new LatLng(38.77699, -90.482418), maxZoom: 10),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
             'accessToken': token,
