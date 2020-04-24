@@ -21,12 +21,8 @@ class PushHandler {
   // Get the user's longitude and latitude positions.
   void getPosition() async {
     try {
-<<<<<<< HEAD
       Position position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-=======
-      Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
->>>>>>> c8aa53f62010fab1b3f2c593f5d96776e9bb5a90
       _longitude = double.parse(position.longitude.toString());
       _latitude = double.parse(position.latitude.toString());
     } catch (e) {
@@ -34,11 +30,7 @@ class PushHandler {
     }
   }
 
-<<<<<<< HEAD
   showNotification(Map<String, Object> locDetails) async {
-=======
-  Future showNotification(Map<String, Object> locDetails) async {
->>>>>>> c8aa53f62010fab1b3f2c593f5d96776e9bb5a90
     var android = new AndroidNotificationDetails(
         'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
         priority: Priority.High, importance: Importance.Max);
@@ -48,60 +40,11 @@ class PushHandler {
         0, locDetails['name'], 'Learn about this area!', platform);
   }
 
-<<<<<<< HEAD
   // Use to check if a user's current location is near a location's vicinity
   checkDistance() {
     const distance = 0.01;
     var latDistance = 0.0;
     var longDistance = 0.0;
-=======
-  /*
-    // If user is close enough to a location but has not previously been close enough to that location
-    if (!inside( [ latitude, longitude ], polygon) && !isUserNearLocation) {
-      isUserNearLocation = false; 
-    }
-    // If user is close enough to a location and continues to be close enough to that location
-    else if (inside([ latitude, longitude ], polygon) && !isUserNearLocation) {
-      isUserNearLocation = true;         
-    }
-    // If a user is not close enough to a location but was previously close enough to a location
-    else if(inside([ latitude, longitude ], polygon) && isUserNearLocation) {
-      isUserNearLocation = true; 
-    } 
-*/
-
-
-  // return true or false based on if user's location intersects with specified coordinates polygon
-  bool inside(point, vs) {
-    // Ray-casting algorithm based on
-    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
-    var x = point[0], y = point[1];
-
-    var inside = false;
-    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
-      var xi = vs[i][0], yi = vs[i][1];
-      var xj = vs[j][0], yj = vs[j][1];
-
-      var intersect =
-          ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-      if (intersect) inside = !inside;
-    }
-
-    return inside;
-  }
-
-
-  // Print true or false if user is within specified coordinates square
-  // print(inside([ 38.766974, -90.489245 ], polygon));
-
-/*
-  // Use to check if a user's current location is near a location's vicinity
-  checkDistance() {
-    var distance = 0.01;
-    var latDistance = 0.0;
-    var longDistance = 0.0;
-
->>>>>>> c8aa53f62010fab1b3f2c593f5d96776e9bb5a90
     for (var location in dataPointsCol) {
       // Go through all the points in the database coming in ["lat"] ["long"]
 
@@ -112,7 +55,6 @@ class PushHandler {
 
       var nearBy = (latDistance <= distance) && (longDistance <= distance);
       // If user is close enough to a location but has not previously been close enough to that location
-<<<<<<< HEAD
       if (nearBy && !isUserNearLocation) {
         isUserNearLocation = true;
         _locationData = location;
@@ -125,22 +67,3 @@ class PushHandler {
     }
   }
 }
-=======
-      if ((latDistance <= distance) &&
-          (longDistance <= distance) ) { //&& !isUserNearLocation
-        //isUserNearLocation = false;
-        //_locationData = location;
-        print("yes");
-        //showNotification(location); // Send the push notification
-      }
-      // If user is close enough to a location and continues to be close enough to that location
-      else if ((latDistance <= distance) &&
-          (longDistance <= distance) ) { //&& isUserNearLocation
-          
-        //isUserNearLocation = true;
-        //print("no");
-      }
-    }
-  }*/
-}
->>>>>>> c8aa53f62010fab1b3f2c593f5d96776e9bb5a90
