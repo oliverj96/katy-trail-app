@@ -20,9 +20,9 @@ class LocationCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/location.png', height: 50, width: 50),
+                //Image.asset('assets/images/location.png', height: 50, width: 50),
                 Padding(padding: const EdgeInsets.only(top: 10.0),
-                    child: Text("   " + locDetails["name"], 
+                    child: Text(locDetails["name"], 
                     style: TextStyle(fontSize: 25),
                   ),
                 ),

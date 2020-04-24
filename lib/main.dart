@@ -61,32 +61,32 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       "name": "Missouri’s first capitol",
       "description": "This is about location 1 and cheese",
-      "long": 38.780073,
-      "lat": -90.481848
+      "lat": 38.780073,
+      "long": -90.481848
     },
     {
       "name": "Masonic Hall 1849",
       "description": "This is about location 2",
-      "long": 38.780621,
-      "lat": -90.481401
+      "lat": 38.780621,
+      "long": -90.481401
     },
     {
       "name": "Daniel Boone Burial Site",
       "description": "This is about location 3",
-      "long": 38.621592,
-      "lat": -91.034315
+      "lat": 38.621592,
+      "long": -91.034315
     },
     {
       "name": "Peers Store",
       "description": "This is about location 3",
-      "long": 38.634266,
-      "lat": -91.122865
+      "lat": 38.634266,
+      "long": -91.122865
     },
     {
       "name": "Daniel Boone Judgment Tree",
       "description": "This is about location 3",
-      "long": 38.608879,
-      "lat": -90.794029
+      "lat": 38.608879,
+      "long": -90.794029
     },
   ];
 

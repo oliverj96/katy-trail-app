@@ -40,6 +40,45 @@ class PushHandler {
         0, locDetails['name'], 'Learn about this area!', platform);
   }
 
+  /*
+    // If user is close enough to a location but has not previously been close enough to that location
+    if (!inside( [ latitude, longitude ], polygon) && !isUserNearLocation) {
+      isUserNearLocation = false; 
+    }
+    // If user is close enough to a location and continues to be close enough to that location
+    else if (inside([ latitude, longitude ], polygon) && !isUserNearLocation) {
+      isUserNearLocation = true;         
+    }
+    // If a user is not close enough to a location but was previously close enough to a location
+    else if(inside([ latitude, longitude ], polygon) && isUserNearLocation) {
+      isUserNearLocation = true; 
+    } 
+*/
+
+
+  // return true or false based on if user's location intersects with specified coordinates polygon
+  bool inside(point, vs) {
+    // Ray-casting algorithm based on
+    // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+    var x = point[0], y = point[1];
+
+    var inside = false;
+    for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+      var xi = vs[i][0], yi = vs[i][1];
+      var xj = vs[j][0], yj = vs[j][1];
+
+      var intersect =
+          ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+    }
+
+    return inside;
+  }
+
+
+  // Print true or false if user is within specified coordinates square
+  // print(inside([ 38.766974, -90.489245 ], polygon));
+
 /*
   // Use to check if a user's current location is near a location's vicinity
   checkDistance() {

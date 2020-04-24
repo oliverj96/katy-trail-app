@@ -16,16 +16,16 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
 
-  double _longitude = 0.0; 
-  double _latitude = 0.0; 
+  double _avgLatitude = 0.0; 
+  double _avgLongitude = 0.0; 
 
   void _getAverageLocation() {
     for (var location in widget.dataPointsCol) {
-      _latitude += location["lat"];
-      _longitude += location["long"];
+      _avgLatitude += location["lat"];
+      _avgLongitude += location["long"];
     }
-    _latitude /= 5;
-    _longitude /= 5;
+    _avgLatitude /= 5;
+    _avgLongitude /= 5;
   }
 
   @override
@@ -52,7 +52,7 @@ class _MapPageState extends State<MapPage> {
       var temp = new Marker(
           width: 45.0,
           height: 45.0,
-          point: new LatLng(location["long"], location["lat"]),
+          point: new LatLng(location["lat"], location["long"]),
           builder: (context) => new Container(
                 child: IconButton(
                   icon: Icon(Icons.location_on),
@@ -82,7 +82,7 @@ class _MapPageState extends State<MapPage> {
       ),
       body: FlutterMap(
         options: new MapOptions(
-            center: new LatLng(_longitude, _latitude), maxZoom: 10),
+            center: new LatLng(_avgLatitude, _avgLongitude,), maxZoom: 10),
             //center: new LatLng(38.77699, -90.482418), maxZoom: 10),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
