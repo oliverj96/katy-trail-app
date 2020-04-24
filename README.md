@@ -6,6 +6,12 @@ In effort of preserving the Katy Trail history, we have developed this app that 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to build the project so it can be published onto the Google Play Store or Apple App Store.
 
+### Hardware Requirements
+
+If you plan to run this app on a real mobile device, here are the hardware requirements:
+- iPhone running iOS 10 or later
+- Android 4.0 or later
+
 ### Prerequisites
 
 An installation of the Flutter framework and Dart SDK is required. Instructions to installing Flutter can be found [here](https://flutter.dev/docs/get-started/install).
