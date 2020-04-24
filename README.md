@@ -42,7 +42,7 @@ In the root directory of the repository.
 ## Authors
 - **Oliver Johnson** - Lead Programmer
 - **Anna George** - Programmer
-- **Anna Lencher** - UI Designer
+- **Anna Rodrigues** - UI Designer
 - **Shraddha Belbase** - Database Developer
 - **Nirali Patel** - Database Developer
 - **Fredo Derazin** - Project Manager
