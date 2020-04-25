@@ -88,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
       "lat": 38.608879,
       "long": -90.794029
     },
+    {
+      "name": "Test Home",
+      "description": "This is my house",
+      "lat": 38.679778,
+      "long": -90.444028
+    },
   ];
 
   Widget currentScreen = HomePage(sampleData, _bmHandler, _pushHandler);
@@ -98,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // Check user's current location every 2 seconds
     Timer.periodic(Duration(seconds: 2), (timer) {
       _pushHandler.getPosition();
-      //_pushHandler.checkDistance();
+      _pushHandler.checkDistance();
     });
 
     return Scaffold(
