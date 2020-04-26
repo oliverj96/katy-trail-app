@@ -9,10 +9,10 @@ class TextSection extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore " +
-                "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo " + 
-                "consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
-                "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "Welcome to the virtual Katy Trail app!  " +
+                "Here you can find information about sites along the trail and something of their history.o " + 
+                "Keep watching—more sites are going to be added all the time.\n\n " +
+                "This app is a collaboration with Magnificent Missouri, the Katy Land Trust, and Lindenwood University students.  ",
                 style: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -22,6 +22,7 @@ class TextSection extends StatelessWidget {
             ),
           ],
         ),
+   
       ),
     );
   }

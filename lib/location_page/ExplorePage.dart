@@ -11,7 +11,7 @@ class ExplorePage extends StatelessWidget {
       appBar: new AppBar(title: Text(locDetails["name"])),
       body: ListView(
         children: <Widget>[
-          Text(locDetails["description"])
+          Text(locDetails["LongDes"])
         ],
       ),
     );
