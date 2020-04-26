@@ -63,6 +63,8 @@ flutter:
     - assets/images/MKT.png
     - assets/images/PilotGroove1.png
     - assets/images/PilotGroove2.png
+    - assets/images/LUlogo.png
+    - assets/images/Missouri.png
     # - assets/docs/bookmarks.json
     # - assets/icon/icon.png //this is for adding the app's icon
 
