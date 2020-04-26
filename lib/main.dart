@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       "name": "Test Home",
       "description": "This is my house",
+      "longDes": "This is a long description of my house",
       "lat": 38.679778, // 37.4219983
       "long": -90.444028 // -122.084
     },
