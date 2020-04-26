@@ -91,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       "name": "Test Home",
       "description": "This is my house",
-      "lat": 38.679778,
-      "long": -90.444028
+      "lat": 38.679778, // 37.4219983
+      "long": -90.444028 // -122.084
     },
   ];
 
