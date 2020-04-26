@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../location_page/ExplorePage.dart';
+import '../location_page/explore_page.dart';
 import './bm_handler.dart';
 
 class BMCard extends StatelessWidget {

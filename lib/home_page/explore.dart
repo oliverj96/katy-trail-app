@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../location_page/LocationPage.dart';
+import '../location_page/location_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
 class Explore extends StatelessWidget {

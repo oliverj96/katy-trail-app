@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './ExplorePage.dart';
+import './explore_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
 class LocationListCard extends StatefulWidget {
