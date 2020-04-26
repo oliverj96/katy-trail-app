@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:katy_trail_app/push_handler.dart';
 import '../map_page/maps.dart';
 import '../bookmark_page/bm_handler.dart';
 
 class MapW extends StatelessWidget {
   final List<Map<String, Object>> data;
-  final points;
   final BookmarkHandler bmHandler;
-  const MapW(this.data, this.points, this.bmHandler);
+  final PushHandler pushHandler;
+  const MapW(this.data, this.bmHandler, this.pushHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class MapW extends StatelessWidget {
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage(data, points, bmHandler)),
+                  MaterialPageRoute(builder: (context) => MapPage(data, bmHandler, pushHandler)),
                 );
               },
               leading: Container(
