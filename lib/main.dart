@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _pushHandler.flutterLocalNotificationsPlugin =
         new FlutterLocalNotificationsPlugin();
-    var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var android = new AndroidInitializationSettings('app_icon');
     var iOS = new IOSInitializationSettings();
     var initSetttings = new InitializationSettings(android, iOS);
     _pushHandler.flutterLocalNotificationsPlugin
@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
       "description": "The Missouri Kansas & Texas Railroad",
       "LongDes":
           "The Missouri Kansas & Texas Railroad—the “Katy”—was built in 1865;" +
-              "; Union Pacific acquired it in 1988. The Katy Railroad had more than" +
+              " Union Pacific acquired it in 1988. The Katy Railroad had more than" +
               "3,377 miles of track  servicing a booming coal industry." +
               "Engines like this one connected the Midwest to Texas.",
       "lat": 38.777167,

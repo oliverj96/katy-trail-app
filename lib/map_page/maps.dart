@@ -83,7 +83,6 @@ class _MapPageState extends State<MapPage> {
       body: FlutterMap(
         options: new MapOptions(
             center: new LatLng(_avgLatitude, _avgLongitude,), maxZoom: 10),
-            //center: new LatLng(38.77699, -90.482418), maxZoom: 10),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
             'accessToken': token,
