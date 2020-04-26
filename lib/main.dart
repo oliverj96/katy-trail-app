@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import './home_page/homepage.dart';
+import './home_page/home_page.dart';
 import './bookmark_page/bm_handler.dart';
-import 'location_page/ExplorePage.dart';
+import 'location_page/explore_page.dart';
 import './push_handler.dart';
 import './location.dart';
 
@@ -35,8 +35,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static var locationData = Locations().data;
   static BookmarkHandler _bmHandler = BookmarkHandler();
-  static PushHandler _pushHandler = PushHandler(sampleData);
+  static PushHandler _pushHandler = PushHandler(locationData);
 
   @override
   void initState() {
@@ -58,9 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => new ExplorePage(_pushHandler.locationData)));
   }
 
-  static var sampleData = Locations().data;
-
-  Widget currentScreen = HomePage(sampleData, _bmHandler, _pushHandler);
+  Widget currentScreen = HomePage(locationData, _bmHandler, _pushHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
   //@override

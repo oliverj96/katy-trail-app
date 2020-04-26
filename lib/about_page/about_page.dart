@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './TextSection.dart';
-import './TitleSection.dart';
-import './AboutImage.dart';
+import './text_section.dart';
+import './title_section.dart';
+import './about_image.dart';
 
 class AboutPage extends StatelessWidget {
   @override
