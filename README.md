@@ -60,9 +60,10 @@ When a user taps the About option,
 ## Works Cited 
 
 Icons on Home Page:
-"Maps Icon." FlatIcon, Dinosoft Labs, www.flaticon.com/.
-"Idea Icon." FlatIcon, Freepik, www.flaticon.com/.
-"Bookbag Icon." FlatIcon, Freepik, www.flaticon.com/.
+
+- "Maps Icon." FlatIcon, Dinosoft Labs, www.flaticon.com/.
+- "Idea Icon." FlatIcon, Freepik, www.flaticon.com/.
+- "Bookbag Icon." FlatIcon, Freepik, www.flaticon.com/.
 
 ## Authors
 - **Oliver Johnson** - Lead Programmer
