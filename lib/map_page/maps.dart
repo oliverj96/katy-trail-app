@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:katy_trail_app/bookmark_page/bookmarks.dart';
 import 'package:latlong/latlong.dart';
 import './location-card.dart';
 import '../bookmark_page/bm_handler.dart';
@@ -79,6 +80,20 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: new AppBar(
         title: Text('Map'),
+        actions: <Widget>[ 
+          IconButton(
+            icon: Icon(
+              Icons.bookmark,
+              color: Colors.white,
+            ),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => new Bookmarks(widget.bmHandler)),
+              );
+            },
+          ),
+        ],
       ),
       body: FlutterMap(
         options: new MapOptions(
