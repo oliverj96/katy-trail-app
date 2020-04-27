@@ -20,14 +20,16 @@ class PushHandler {
 
   // Get the user's longitude and latitude positions.
   Future getPosition() async {
+    Position position;
     try {
-      var position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      _longitude = double.parse(position.longitude.toString());
-      _latitude = double.parse(position.latitude.toString());
+      position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     } catch (e) {
-      print(e);
       // Ignore errors.
+      return;
     }
+    _longitude = double.parse(position.longitude.toString());
+    _latitude = double.parse(position.latitude.toString());
   }
 
   showNotification(Map<String, Object> locDetails) async {
@@ -49,9 +51,9 @@ class PushHandler {
       // Go through all the points in the database coming in ["lat"] ["long"]
 
       latDistance = (_latitude - location["lat"]).abs();
-      //print(_latitude);
       longDistance = (_longitude - location["long"]).abs();
-      //print(_longitude);
+      // print(_latitude);
+      // print(_longitude);
 
       var nearBy = (latDistance <= distance) && (longDistance <= distance);
       // If user is close enough to a location but has not previously been close enough to that location
