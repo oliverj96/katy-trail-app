@@ -53,9 +53,9 @@ The app opens to a home page with three navigation options: Map, Explore, and Ab
 There is also a bookmark icon on the blue title bar in the upper-right hand corner that leads to a bookmark page.
 
 **Map Page**
-- Map of St. Charles with red location icons at different points on the Katy Trail
+- Shows map of St. Charles with red location icons at different points on the Katy Trail
 - Ability to zoom in and out on map by pinching together two fingers or spreading two fingers apart on phone screen
-- Ability to move around on map by placing a finger on phone screen and swiping in any direction to move the map
+- Ability to move around on map by placing a finger on phone screen and swiping in any direction
 - Tapping a red location pops up a location card with that specific location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark"
 - Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
 - Tapping "Bookmark" moves the location data (location name, image/s, and description) to the user's bookmarks and changes "Bookmark" to "Remove"
@@ -65,7 +65,7 @@ There is also a bookmark icon on the blue title bar in the upper-right hand corn
 
 **Explore Page**
 - Shows all locations on the Katy Trail that have been added to the app; each location appears on a separate card with the location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark"
-- Scrolling is possible by swiping a finger up and down on phone's screen
+- Ability to scroll up and down by swiping a finger up and down on phone's screen
 - Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
 - Tapping "Bookmark" moves the location data (location name, image/s, and description) to the user's bookmarks and changes "Bookmark" to "Remove"
 - Tapping "Remove" removes the location data from the user's bookmarks and changes "Remove" to "Bookmark"
@@ -77,7 +77,7 @@ There is also a bookmark icon on the blue title bar in the upper-right hand corn
 
 **Bookmark Page**
 - Shows all locations that user has bookmarked on separate cards with the location's name, a short description, and two side-by-side texts that say "Learn" and "Remove"
-- Scrolling is possible by swiping a finger up and down on phone's screen (given that there are enough bookmarked locations to scroll down)
+- Ability to scroll up and down by swiping a finger up and down on phone's screen (given that there are enough bookmarked locations to scroll down)
 - Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
 - Tapping "Remove" removes the location data from the bookmarks page so the location card disappears
 
