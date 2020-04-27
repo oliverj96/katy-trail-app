@@ -65,6 +65,7 @@ flutter:
     - assets/images/PilotGroove2.png
     - assets/images/LUlogo.png
     - assets/images/Missouri.png
+    - assets/images/noimage.png
     # - assets/docs/bookmarks.json
     # - assets/icon/icon.png //this is for adding the app's icon
 

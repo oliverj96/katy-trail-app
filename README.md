@@ -45,6 +45,26 @@ In the root directory of the repository.
 
 ## Deployment
 
+
+## Usage
+
+A user must tap the app icon on their phone's home screen to open the app. 
+The app opens to a home page with three navigation options: Map, Explore, and About.
+
+When a user taps the Map option, a map of the St. Charles area will appear with red location icons set at different points on the Katy Trail. A user can zoom in on the map by placing two fingers pinched together on the glass of their phone and spreading them. Zooming out on the map is done by placing two fingers far apart and pinching together. A user can also move around on the map by placing a finger on the glass and swiping in any direction to move the map. When a red location is tapped, a location card with that specific location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark" appears. When the "Learn" text is tapped on a location card, the user will be directed to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location. When the "Bookmark" text is tapped, the location data (location name, image/s, and description) is moved to the user's bookmarks. Additionally, the "Bookmark" text will be replaced with "Remove", which a user can tap to remove the location from their bookmarked locations. The "Remove" text will then again be replaced with "Bookmark". Tapping anywhere outside the location card will cause the location card to move in a downward motion until it disappears. From the Map page, there is a bookmarks icon on the blue title bar in the upper-right hand corner. A user can tap this to navigate to the bookmarks page. 
+
+When a user taps the Explore option, all the locations on the Katy Trail that have been added to the app will appear on separate cards with the location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark". When the "Learn" text is tapped on a location card, the user will be directed to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location. A user can scroll up and down on the page by swiping their finger up and down on their phone's screen. When the "Bookmark" text is tapped, the location data (location name, image/s, and description) is moved to the user's bookmarks. Additionally, the "Bookmark" text will be replaced with "Remove", which a user can tap to remove the location from their bookmarked locations. The "Remove" text will then again be replaced with "Bookmark". From the Explore page, there is a bookmarks icon on the blue title bar in the upper-right hand corner. A user can tap this to navigate to the bookmarks page.
+
+When a user taps the About option, 
+
+## Works Cited 
+
+Icons on Home Page:
+
+- "Maps Icon." FlatIcon, Dinosoft Labs, www.flaticon.com/.
+- "Idea Icon." FlatIcon, Freepik, www.flaticon.com/.
+- "Bookbag Icon." FlatIcon, Freepik, www.flaticon.com/.
+
 ## Authors
 - **Oliver Johnson** - Lead Programmer
 - **Anna George** - Programmer

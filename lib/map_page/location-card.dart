@@ -53,9 +53,8 @@ class _LocationCardState extends State<LocationCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  // description takes up to 41 characters 
                     child: Text(widget.locDetails["description"], 
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(color: Colors.grey[700], fontSize: 16),
                   ),
                 ),
               ],
@@ -76,8 +75,8 @@ class _LocationCardState extends State<LocationCard> {
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),
                       child: Text(
-                        "Explore",
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic), 
+                        "Learn",
+                        style: TextStyle(color: Colors.blue, fontSize: 20), 
                       ),
                     ),
                   ),
@@ -90,7 +89,7 @@ class _LocationCardState extends State<LocationCard> {
                     child: Padding(padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
                         bmText,
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                        style: TextStyle(color: Colors.blue, fontSize: 20),
                       ),
                     ),
                   ),

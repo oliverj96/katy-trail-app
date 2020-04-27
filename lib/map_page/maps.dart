@@ -97,7 +97,10 @@ class _MapPageState extends State<MapPage> {
       ),
       body: FlutterMap(
         options: new MapOptions(
-            center: new LatLng(_avgLatitude, _avgLongitude,), maxZoom: 10),
+            center: new LatLng(_avgLatitude, _avgLongitude), 
+            zoom: 10.0,
+            swPanBoundary: LatLng(38.60881, -90.794006),
+            nePanBoundary: LatLng(38.784926, -90.478854)),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
             'accessToken': token,
@@ -105,6 +108,7 @@ class _MapPageState extends State<MapPage> {
           }),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
+
       ),
     );
   }
