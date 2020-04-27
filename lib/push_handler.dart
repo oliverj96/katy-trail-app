@@ -49,9 +49,9 @@ class PushHandler {
       // Go through all the points in the database coming in ["lat"] ["long"]
 
       latDistance = (_latitude - location["lat"]).abs();
-      print(_latitude);
+      //print(_latitude);
       longDistance = (_longitude - location["long"]).abs();
-      print(_longitude);
+      //print(_longitude);
 
       var nearBy = (latDistance <= distance) && (longDistance <= distance);
       // If user is close enough to a location but has not previously been close enough to that location
