@@ -3,28 +3,28 @@ class Locations {
     {
       "name": "Test Home",
       "description": "This is my house",
-      "LongDes": "The first Missouri State Capitol State Historic Site holds years of history." +
-          "It was Missouri’s first capitol building between statehood in 1821 and the capitol moving to Jefferson City in 1826." +
+      "LongDes": "The first Missouri State Capital State Historic Site holds years of history." +
+          "It was Missouri’s first capital building between statehood in 1821 and the capitol moving to Jefferson City in 1826." +
           "The building was restored in the 1960s. It features 11 rooms to take you back in history." +
-          "Tours available at the State Capitol Historic Site office next door." +
+          "Tours available at the State Capital Historic Site office next door." +
           "Here’s the site today, and before the state restored it." +
           "(Images: St. Charles County Historical Society, Missouri State Parks)",
       "lat": 38.679778, // 37.4219983
       "long": -90.444028, // -122.084
-      "images": "FCapitol1.png" "FCapitol2.png"
+      "images": "FCapitol1.png:FCapitol2.png"
     },
     {
       "name": "Missouri’s First Capitol",
       "description": "Missouri's first capital building.",
-      "LongDes": "The first Missouri State Capitol State Historic Site holds years of history." +
-          "It was Missouri’s first capitol building between statehood in 1821 and the capitol moving to Jefferson City in 1826." +
+      "LongDes": "The first Missouri State Capital State Historic Site holds years of history." +
+          "It was Missouri’s first capital building between statehood in 1821 and the capitol moving to Jefferson City in 1826." +
           "The building was restored in the 1960s. It features 11 rooms to take you back in history." +
           "Tours available at the State Capitol Historic Site office next door." +
           "Here’s the site today, and before the state restored it." +
           "(Images: St. Charles County Historical Society, Missouri State Parks)",
       "lat": 38.784926,
       "long": -90.478854,
-      "images": "FCapitol1.png" "FCapitol2.png"
+      "images": "FCapitol1.png:FCapitol2.png"
     },
     {
       "name": "Pilot Groove",
@@ -35,7 +35,7 @@ class Locations {
           "derailed and exploded, sending shrapnel a half mile down to the Pilot Grove depot",
       "lat": 38.60881,
       "long": -90.794006,
-      "images": "PilotGroove1.png" "PilotGroove2.png"
+      "images": "PilotGroove1.png:PilotGroove2.png"
     },
     {
       "name": "Augusta Cemetery",
@@ -62,7 +62,7 @@ class Locations {
       "images": "MKT.png"
     },
   ];
-  List<Map<String, Object>> get data{
+  List<Map<String, Object>> get data {
     return _data;
   }
 }
