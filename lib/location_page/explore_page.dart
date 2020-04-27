@@ -9,9 +9,8 @@ class ExplorePage extends StatelessWidget {
     Image firstImage;
     List<Image> restImages;
     var images = locDetails["images"].toString().split(':');
-    // print(locDetails["images"].toString().split(':'));
     if (images.length > 0) {
-      firstImage = Image.asset(images[0]);
+      firstImage = Image.asset(getAssetPath(images[0]));
     }
     print(images[0]);
     return Scaffold(
@@ -25,16 +24,16 @@ class ExplorePage extends StatelessWidget {
                 "${locDetails["description"]}\n",
                 style: TextStyle(
                   color: Colors.grey[700],
-                  fontSize: 18,
+                  fontSize: 13,
                   fontStyle: FontStyle.italic,
                 ),
               ),
             ),
-            // firstImage,
+            firstImage,
             Text(
               locDetails["LongDes"],
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 15,
               ),
             )
           ],
@@ -42,5 +41,9 @@ class ExplorePage extends StatelessWidget {
         margin: EdgeInsets.all(20),
       ),
     );
+  }
+
+  String getAssetPath(String name){
+    return "assets/images/$name";
   }
 }

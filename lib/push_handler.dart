@@ -21,11 +21,14 @@ class PushHandler {
   // Get the user's longitude and latitude positions.
   Future getPosition() async {
     try {
-      var position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      var position = await Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+          .catchError((onError) => (e) {
+                print(e);
+              });
       _longitude = double.parse(position.longitude.toString());
       _latitude = double.parse(position.latitude.toString());
     } catch (e) {
-      print(e);
       // Ignore errors.
     }
   }
