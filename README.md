@@ -49,23 +49,34 @@ In the root directory of the repository.
 ## Usage
 
 A user must tap the app icon on their phone's home screen to open the app. 
-The app opens to a home page with three navigation options: Map, Explore, and About.
+The app opens to a home page with three navigation options: Map, Explore, and About. 
+There is also a bookmark icon on the blue title bar in the upper-right hand corner that leads to a bookmark page.
 
-Map 
+Map Page
 - Map of St. Charles with red location icons at different points on the Katy Trail
 - Ability to zoom in and out on map by pinching together two fingers or spreading two fingers apart on phone screen
 - Ability to move around on map by placing a finger on phone screen and swiping in any direction to move the map
 - Tapping a red location pops up a location card with that specific location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark"
-- Tapping "Learn" text on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
-- Tapping "Bookmark" text moves the location data (location name, image/s, and description) to the user's bookmarks and changes "Bookmark" to "Remove"
+- Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
+- Tapping "Bookmark" moves the location data (location name, image/s, and description) to the user's bookmarks and changes "Bookmark" to "Remove"
 - Tapping "Remove" removes the location data from the user's bookmarks and changes "Remove" to "Bookmark"
 - Tapping anywhere outside the location card makes the location card disappear
 - Tapping the bookmarks icon on the blue title bar in the upper-right hand corner navigates to the bookmark page
 
-Explore
-When a user taps the Explore option, all the locations on the Katy Trail that have been added to the app will appear on separate cards with the location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark". When the "Learn" text is tapped on a location card, the user will be directed to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location. A user can scroll up and down on the page by swiping their finger up and down on their phone's screen. When the "Bookmark" text is tapped, the location data (location name, image/s, and description) is moved to the user's bookmarks. Additionally, the "Bookmark" text will be replaced with "Remove", which a user can tap to remove the location from their bookmarked locations. The "Remove" text will then again be replaced with "Bookmark". From the Explore page, there is a bookmarks icon on the blue title bar in the upper-right hand corner. A user can tap this to navigate to the bookmarks page.
+Explore Page
+- Shows all locations on the Katy Trail that have been added to the app; each location appears on a separate card with the location's name, a short description, and two side-by-side texts that say "Learn" and "Bookmark"
+- Scrolling is possible by swiping a finger up and down on phone's screen
+- Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
+- Tapping "Bookmark" moves the location data (location name, image/s, and description) to the user's bookmarks and changes "Bookmark" to "Remove"
+- Tapping "Remove" removes the location data from the user's bookmarks and changes "Remove" to "Bookmark"
+- Tapping the bookmarks icon on the blue title bar in the upper-right hand corner navigates to the bookmark page
 
-About
+About Page
+- 
+- 
+-
+
+Bookmark Page
 
 
 ## Works Cited 
