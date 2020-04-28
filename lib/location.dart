@@ -1,19 +1,6 @@
 class Locations {
   var _data = [
     {
-      "name": "Test Home",
-      "description": "This is my house",
-      "LongDes": "The first Missouri State Capital State Historic Site holds years of history. " +
-          "It was Missouri’s first capital building between statehood in 1821 and the capitol moving to Jefferson City in 1826. " +
-          "The building was restored in the 1960s. It features 11 rooms to take you back in history. " +
-          "Tours available at the State Capital Historic Site office next door. " +
-          "Here’s the site today, and before the state restored it." +
-          "(Images: St. Charles County Historical Society, Missouri State Parks)",
-      "lat": 38.679778, // 37.4219983
-      "long": -90.444028, // -122.084
-      "images": ""
-    },
-    {
       "name": "Missouri’s First Capitol",
       "description": "Missouri's first capital building.",
       "LongDes": "The first Missouri State Capital State Historic Site holds years of history. " +

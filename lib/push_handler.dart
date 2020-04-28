@@ -44,28 +44,33 @@ class PushHandler {
 
   // Use to check if a user's current location is near a location's vicinity
   checkDistance() {
-    const distance = 0.006;
+    const distance = 0.003;
     var latDistance = 0.0;
     var longDistance = 0.0;
+    var atAnyLocation = false;
+    var nearBy = false;
     for (var location in dataPointsCol) {
       // Go through all the points in the database coming in ["lat"] ["long"]
 
       latDistance = (_latitude - location["lat"]).abs();
       longDistance = (_longitude - location["long"]).abs();
-      // print(_latitude);
-      // print(_longitude);
 
-      var nearBy = (latDistance <= distance) && (longDistance <= distance);
+      nearBy = (latDistance <= distance) && (longDistance <= distance);
+      if (nearBy && alreadyNearBy) {
+        return;
+      }
       // If user is close enough to a location but has not previously been close enough to that location
       print("Nearby: $nearBy alreadyNearby: $alreadyNearBy");
       if (nearBy && !alreadyNearBy) {
-        alreadyNearBy = true;
+        this.alreadyNearBy = true;
+        atAnyLocation = true;
         _locationData = location;
         showNotification(location); // Send the push notification
+        return;
       }
-      else if (!nearBy && alreadyNearBy) {
-        alreadyNearBy = false;
-      }
+    }
+    if (!atAnyLocation && !nearBy) {
+      alreadyNearBy = false;
     }
   }
 }
