@@ -74,6 +74,7 @@ There is also a bookmark icon on the blue title bar in the upper-right hand corn
 **About Page**
 - Shows an image of the Katy Trail, the Lindenwood University logo, and the Magnificent Missouri logo
 - Has a brief welcome message and summary of the app
+- Tapping the bookmarks icon on the blue title bar in the upper-right hand corner navigates to the bookmark page
 
 **Bookmark Page**
 - Shows all locations that user has bookmarked on separate cards with the location's name, a short description, and two side-by-side texts that say "Learn" and "Remove"
