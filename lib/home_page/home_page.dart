@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             MapW(data, bmHandler, pushHandler),
             Explore(data, bmHandler),
-            About(),
+            About(bmHandler),
           ],
         )
       )
