@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:katy_trail_app/bookmark_page/bm_handler.dart';
 import '../about_page/about_page.dart';
 
 class About extends StatelessWidget {
-  const About({Key key}) : super(key: key);
+
+  final BookmarkHandler bmHandler;
+  About(this.bmHandler); 
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class About extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(vertical: 15.0),
               onTap: (){
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => AboutPage()),
+                  MaterialPageRoute(builder: (context) => AboutPage(bmHandler)),
                 );
               },
               leading: Image.asset('assets/images/about.png', height: 100, width: 100),
