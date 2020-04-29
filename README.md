@@ -46,6 +46,17 @@ In the root directory of the repository.
 ## Deployment
 
 
+## Key Features
+
+- Easy navigation
+- Geolocator
+- Push notifications
+- Maps integration
+- Portrait mode lock
+- Fast-loading screens
+- Android and iOS compatibility 
+- Simple design and color scheme
+
 ## Usage
 
 A user must tap the app icon on their phone's home screen to open the app. 
