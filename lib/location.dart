@@ -29,7 +29,8 @@ class Locations {
       "citations":  "(Images: St. Charles County Historical Society, Missouri State Parks) ",
       "lat": 38.784926,
       "long": -90.478854,
-      "images": "FCapital1.png:FCapital2.png"
+      "images": "FCapital1.png:FCapital2.png",
+      "croppedImages": "FCapital_cropped.jpg"
     },
     {
       "name": "Pilot Grove",
@@ -41,7 +42,8 @@ class Locations {
       "citations":  "(Image: The Katy Trail) ",
       "lat": 38.60881,
       "long": -90.794006,
-      "images": "PilotGrove.png"
+      "images": "PilotGrove.png",
+      "croppedImages": "Pilotgrove_cropped.jpg"
     },
     {
       "name": "Augusta Cemetery",
@@ -54,7 +56,8 @@ class Locations {
       "citations":  "(Image: Augusta Trail) ",
       "lat": 38.580103,
       "long": -90.884011,
-      "images": "Augusta.png"
+      "images": "Augusta.png",
+      "croppedImages": "Augusta_cropped.jpg"
     },
     {
       "name": "MKT RAILROAD ",
@@ -67,7 +70,8 @@ class Locations {
       "citations":  "(Image: St. Charles Frontier Park) ",
       "lat": 38.777167,
       "long": -90.482046,
-      "images": "MKT.png"
+      "images": "MKT.png",
+      "croppedImages": "MKT_cropped.jpg"
     },
     /*PASTE THE FORMAT HERE TO ADD THE NEW LOCATION*/
   ];
