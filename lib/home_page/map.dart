@@ -17,7 +17,7 @@ class MapW extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 20.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
               onTap: (){
                 Navigator.push(
                   context,
@@ -26,7 +26,7 @@ class MapW extends StatelessWidget {
               },
               leading: Container(
                 height: 100,
-                child: Image.asset('assets/images/map.png', height: 100, width: 100),
+                child: Image.asset('assets/images/map.png', height: 100, width: 80),
               ),
               //leading: 
               title: Text('Map'),
@@ -35,6 +35,7 @@ class MapW extends StatelessWidget {
           ],
         )
       ),
+      margin: EdgeInsets.only(top: 8.0, left: 5.0, right: 5.0),
     );
   }
 }

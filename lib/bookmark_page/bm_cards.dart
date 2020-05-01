@@ -17,6 +17,7 @@ class BMCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
+              leading: Image.asset("assets/images/cropped/${locDetails["croppedImages"]}"),
               title: Text(locDetails["name"]),
               subtitle: Text(locDetails["description"]),
             ),
