@@ -17,7 +17,7 @@ class MapW extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 20.0),
               onTap: (){
                 Navigator.push(
                   context,

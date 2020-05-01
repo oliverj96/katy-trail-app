@@ -35,6 +35,12 @@ class ExplorePage extends StatelessWidget {
         style: TextStyle(
           fontSize: 15,
         ),
+      ),
+      Text(
+        "\n${locDetails["citations"]}",
+        style: TextStyle(
+          fontSize: 15,
+        ),
       )
     ];
 

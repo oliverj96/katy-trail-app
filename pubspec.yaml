@@ -57,12 +57,11 @@ flutter:
     - assets/images/map.png
     - assets/images/location.png
     - assets/docs/path.txt
-    - assets/images/FCapitol1.png
-    - assets/images/FCapitol2.png
+    - assets/images/FCapital1.png
+    - assets/images/FCapital2.png
     - assets/images/Augusta.png
     - assets/images/MKT.png
-    - assets/images/PilotGroove1.png
-    - assets/images/PilotGroove2.png
+    - assets/images/PilotGrove.png
     - assets/images/LUlogo.png
     - assets/images/Missouri.png
     - assets/images/noimage.png
