@@ -41,7 +41,7 @@ class Locations {
       "citations":  "(Image: The Katy Trail) ",
       "lat": 38.60881,
       "long": -90.794006,
-      "images": "PilotGrove1.png"
+      "images": "PilotGrove.png"
     },
     {
       "name": "Augusta Cemetery",
