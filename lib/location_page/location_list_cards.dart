@@ -53,6 +53,7 @@ class _LocationListCardState extends State<LocationListCard> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
+              leading: Image.asset("assets/images/cropped/${widget.locDetails["croppedImages"]}"),
               title: Text(widget.locDetails["name"]),
               subtitle: Text(widget.locDetails["description"]),
             ),
