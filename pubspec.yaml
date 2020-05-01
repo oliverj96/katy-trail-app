@@ -45,7 +45,7 @@ flutter:
   uses-material-design: true
 
   assets:     
-    - assets/images/katy_trail.jpg
+    - assets/images/katy_trail.png
     - assets/docs/path.txt 
     - assets/images/about.png
     - assets/images/explore.png
@@ -56,6 +56,15 @@ flutter:
     - assets/sqrdimages/Missouril.jpg
     - assets/sqrdimages/Pilot.jpg
     - assets/sqrdimages/railroad.jpg
+    - assets/images/FCapital1.png
+    - assets/images/FCapital2.png
+    - assets/images/Augusta.png
+    - assets/images/MKT.png
+    - assets/images/PilotGrove.png
+    - assets/images/LUlogo.png
+    - assets/images/Missouri.png
+    - assets/images/noimage.png
+    # - assets/docs/bookmarks.json
     # - assets/icon/icon.png //this is for adding the app's icon
 
   # An image asset can refer to one or more resolution-specific "variants", see

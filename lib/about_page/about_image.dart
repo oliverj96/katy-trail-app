@@ -5,8 +5,8 @@ class AboutImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.only(right: 30, left: 30, bottom: 15),
-        child: Image.asset('assets/images/katy_trail.jpg'),
+        margin: EdgeInsets.only(right: 20, left: 20, bottom: 15),
+        child: Image.asset('assets/images/katy_trail.png'),
       ),
     );
   }

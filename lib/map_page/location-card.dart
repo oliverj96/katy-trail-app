@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
-import '../location_page/LocationPage.dart';
-import '../location_page/ExplorePage.dart';
+import '../location_page/explore_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
-class LocationCard extends StatelessWidget {
+class LocationCard extends StatefulWidget {
   final Map<String, Object> locDetails;
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;
   LocationCard(this.locDetails, this.data, this.bmHandler);
 
   @override
+  _LocationCardState createState() => _LocationCardState();
+}
+
+class _LocationCardState extends State<LocationCard> {
+  Function bmAction;
+
+  @override
   Widget build(BuildContext context) {
+    String bmText;
+    if (widget.bmHandler.isBookmarked(widget.locDetails)){
+      setState(() {
+        bmText = "Remove";
+        bmAction = (){widget.bmHandler.removeBookmark(widget.locDetails);};
+      });
+    }
+    else{
+      setState(() {
+        bmText = "Bookmark";
+        bmAction = (){widget.bmHandler.addBookmark(widget.locDetails);};
+      });
+    }
     return Container(
       height: 180,
       padding: EdgeInsets.fromLTRB(20,20,20,20),
@@ -20,9 +39,9 @@ class LocationCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/location.png', height: 50, width: 50),
+                //Image.asset('assets/images/location.png', height: 50, width: 50),
                 Padding(padding: const EdgeInsets.only(top: 10.0),
-                    child: Text("   " + locDetails["name"], 
+                    child: Text(widget.locDetails["name"], 
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
@@ -34,9 +53,8 @@ class LocationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 20.0),
-                  // description takes up to 41 characters 
-                    child: Text(locDetails["description"], 
-                    style: TextStyle(fontSize: 16),
+                    child: Text(widget.locDetails["description"], 
+                    style: TextStyle(color: Colors.grey[700], fontSize: 16),
                   ),
                 ),
               ],
@@ -52,28 +70,26 @@ class LocationCard extends StatelessWidget {
                     onTap: (){
                       Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ExplorePage(locDetails)),
+                      MaterialPageRoute(builder: (context) => ExplorePage(widget.locDetails)),
                       );
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),
                       child: Text(
-                        "Explore",
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic), 
+                        "Learn",
+                        style: TextStyle(color: Colors.blue, fontSize: 20), 
                       ),
                     ),
                   ),
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(
-                      context,
-                      //TODO will push to BookmarkPage and add location to bookmarks
-                      MaterialPageRoute(builder: (context) => LocationPage(data, bmHandler)),
-                      );
+                      setState(() {
+                        bmAction();
+                      });
                     },
                     child: Padding(padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
-                        "Bookmark",
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                        bmText,
+                        style: TextStyle(color: Colors.blue, fontSize: 20),
                       ),
                     ),
                   ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import './bm_cards.dart';
 import './bm_handler.dart';
-import 'dart:async';
 
 class Bookmarks extends StatefulWidget {
   final BookmarkHandler bmHandler;
@@ -19,7 +18,7 @@ class _BookmarksState extends State<Bookmarks> {
 
   void bmChange(Map<String, Object> location){
     setState(() {
-      bmHandler.RemoveBookmark(location);
+      bmHandler.removeBookmark(location);
       bmList = bmHandler.getBookmarks();
     });
   }

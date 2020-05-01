@@ -12,7 +12,6 @@ class TitleSection extends StatelessWidget {
               "Katy Trail History",
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
                 fontSize: 30,
               ),
             ),

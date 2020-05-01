@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../about_page/AboutPage.dart';
 import './location_list_cards.dart';
 import '../bookmark_page/bm_handler.dart';
 import '../bookmark_page/bookmarks.dart';
