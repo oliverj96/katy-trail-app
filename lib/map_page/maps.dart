@@ -20,6 +20,7 @@ class _MapPageState extends State<MapPage> {
   double _avgLatitude = 0.0; 
   double _avgLongitude = 0.0; 
 
+  // Get average latitude and longitude points for all locations 
   void _getAverageLocation() {
     for (var location in widget.dataPointsCol) {
       _avgLatitude += location["lat"];
@@ -40,33 +41,34 @@ class _MapPageState extends State<MapPage> {
     
     _showLocationCard(context, Map<String, Object> locData) {
       showModalBottomSheet(
-          context: context,
-          builder: (BuildContext context) {
-            return LocationCard(
-                locData, widget.dataPointsCol, widget.bmHandler);
-          });
+        context: context,
+        builder: (BuildContext context) {
+          return LocationCard(
+            locData, widget.dataPointsCol, widget.bmHandler
+          );
+        }
+      );
     }
  
     var locationPlaces = List<Marker>();
     for (var location in widget.dataPointsCol) {
       // Create marker widget for each location
       var temp = new Marker(
-          width: 45.0,
-          height: 45.0,
-          point: new LatLng(location["lat"], location["long"]),
-          builder: (context) => new Container(
-                child: IconButton(
-                  icon: Icon(Icons.location_on),
-                  color: Colors.red,
-                  iconSize: 45.0,
-                  onPressed: () {
-                    //locationData = location;
-                    //widget.pushHandler.showNotification(location);
-                    _showLocationCard(context, location);
-                    print("Location: " + location["name"] + " was tapped.");
-                  },
-                ),
-              ));
+        width: 45.0,
+        height: 45.0,
+        point: new LatLng(location["lat"], location["long"]),
+        builder: (context) => new Container(
+          child: IconButton(
+            icon: Icon(Icons.location_on),
+            color: Colors.red,
+            iconSize: 45.0,
+            onPressed: () {
+              _showLocationCard(context, location);
+              print("Location: " + location["name"] + " was tapped.");
+            },
+          ),
+        )
+      );
       // Append location to list of places
       locationPlaces.add(temp);   
     }
@@ -100,7 +102,8 @@ class _MapPageState extends State<MapPage> {
             center: new LatLng(_avgLatitude, _avgLongitude), 
             zoom: 10.0,
             swPanBoundary: LatLng(38.60881, -90.794006),
-            nePanBoundary: LatLng(38.784926, -90.478854)),
+            nePanBoundary: LatLng(38.784926, -90.478854)
+        ),
         layers: [
           new TileLayerOptions(urlTemplate: url, additionalOptions: {
             'accessToken': token,
@@ -108,7 +111,6 @@ class _MapPageState extends State<MapPage> {
           }),
           new MarkerLayerOptions(markers: locationPlaces),
         ],
-
       ),
     );
   }

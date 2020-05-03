@@ -26,7 +26,6 @@ dependencies:
   google_map_polyutil: ^1.0.0
   flutter_launcher_name: ^0.0.1
   firebase_core: ^0.4.4+3
-  # firebase_analytics: ^5.0.11fl
   flutter_local_notifications: ^1.4.0
   path_provider: ^1.6.5
   location_permissions: ^2.0.5

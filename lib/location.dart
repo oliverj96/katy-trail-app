@@ -1,19 +1,20 @@
 /* This is the database 
-   New locations will be added from here and old locations will also be managed here
+  New locations will be added from here and old locations will also be managed here
   If you would like to add a new location please copy the following:
   {
-      "name": "LOCATION NAME ",
-      "description": "Short Description",
-      "LongDes":
-          "Long description " +
-          "Description" +
-          " " +
-          " ",
-      "citations":  "() ",        
-      "lat": LATITUDE VALUE,
-      "long": LONGITUDE VALUE,
-      "images": "Image.png"
-    },
+    "name": "LOCATION NAME ",
+    "description": "Short Description",
+    "LongDes":
+        "Long description " +
+        "Description" +
+        " " +
+        " ",
+    "citations":  "() ",        
+    "lat": LATITUDE VALUE,
+    "long": LONGITUDE VALUE,
+    "images": "Image.png", 
+    "croppedImages": "Square-cropped-image.jpg"
+  },
 */
 
 class Locations {
