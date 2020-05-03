@@ -12,6 +12,8 @@ If you plan to run this app on a real mobile device, here are the hardware requi
 - iPhone running iOS 10 or later
 - Android 4.0 or later
 
+For emulators, it's recommended that your computer have at least 4GB or RAM, 15GB of storage, either an Intel quad core CPU or an AMD Ryzen CPU.
+
 ### Prerequisites
 
 An installation of the Flutter framework and Dart SDK is required. Instructions to installing Flutter can be found [here](https://flutter.dev/docs/get-started/install).
@@ -93,6 +95,10 @@ There is also a bookmark icon on the blue title bar in the upper-right hand corn
 - Tapping "Learn" on a location card navigates to a page with that location's name on the top blue title bar, one or more images of the location, and a historical description of the location
 - Tapping "Remove" removes the location data from the bookmarks page so the location card disappears
 
+## Known Issues
+- [ ] Tapping on a notification will push the learn page twice, causing the user having to hit back twice.
+- [ ] Bookmarks are not saved once the app is terminated.
+
 ## Works Cited 
 
 Icons on Home Page:
@@ -108,3 +114,5 @@ Icons on Home Page:
 - **Shraddha Belbase** - Database Developer
 - **Nirali Patel** - Database Developer
 - **Fredo Derazin** - Project Manager
+
+Developed on MacOS and Windows using Visual Studio Code, XCode, and Android Studio.
