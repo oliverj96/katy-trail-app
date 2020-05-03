@@ -39,6 +39,14 @@ class _LocationCardState extends State<LocationCard> {
       child: Column(
         children: <Widget>[
           GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ExplorePage(widget.locDetails)),
+              );
+            },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

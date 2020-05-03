@@ -51,9 +51,14 @@ class _LocationListCardState extends State<LocationListCard> {
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: <Widget>[            
             ListTile(
               leading: Image.asset("assets/images/cropped/${widget.locDetails["croppedImages"]}"),
+              onTap: () {
+                Navigator.push(context,
+                  MaterialPageRoute( builder: (context) => ExplorePage(widget.locDetails)),
+                );
+              },
               title: Text(widget.locDetails["name"]),
               subtitle: Text(widget.locDetails["description"]),
             ),
