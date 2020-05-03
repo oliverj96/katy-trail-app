@@ -18,7 +18,7 @@ class PushHandler {
     return _locationData;
   }
 
-  // Get the user's longitude and latitude positions.
+  // Get the user's longitude and latitude positions
   Future getPosition() async {
     Position position;
     try {
@@ -32,6 +32,7 @@ class PushHandler {
     _latitude = double.parse(position.latitude.toString());
   }
 
+  // Use to show push notification of a specified location
   showNotification(Map<String, Object> locDetails) async {
     var android = new AndroidNotificationDetails(
         'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',

@@ -13,6 +13,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Lock app's orientation on portrait mode 
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -34,7 +35,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> { 
   static var locationData = Locations().data;
   static BookmarkHandler _bmHandler = BookmarkHandler();
   static PushHandler _pushHandler = PushHandler(locationData);
@@ -51,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
         .initialize(initSetttings, onSelectNotification: onSelectNotification);
   }
 
+  // Handle location page navigation for when a user taps on a push notification
   Future onSelectNotification(String payload) async {
-    // Use payload for selecting specific location page
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -62,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget currentScreen = HomePage(locationData, _bmHandler, _pushHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
-  //@override
   Widget build(BuildContext context) {
     // Check user's current location every 2 seconds
     Timer.periodic(Duration(seconds: 2), (timer) {
@@ -73,5 +73,5 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: PageStorage(child: currentScreen, bucket: bucket),
     );
-  } //uncomment after showing push notifications example
+  } 
 }
