@@ -15,7 +15,7 @@ class TextSection extends StatelessWidget {
             Text(
                 "Welcome to the virtual Katy Trail app!  " +
                 "Here you can find information about sites along the trail and something of their history " + 
-                "Keep watching— more sites are going to be added all the time.\n\n " +
+                "Keep watching— more sites are going to be added all the time.\n\n" +
                 "This app is a collaboration with Magnificent Missouri, the Katy Land Trust, and Lindenwood University students.  ",
                 style: TextStyle(
                 color: Colors.black,
