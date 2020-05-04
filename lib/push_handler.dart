@@ -3,11 +3,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class PushHandler {
   final List<Map<String, Object>> dataPointsCol;
+  PushHandler(this.dataPointsCol);
+  
   double _longitude = 0;
   double _latitude = 0;
-  bool alreadyNearBy = false;
+  bool _alreadyNearBy = false;
   Map<String, Object> _locationData;
-  PushHandler(this.dataPointsCol);
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   FlutterLocalNotificationsPlugin get localNotificationPlugin {
@@ -57,13 +58,12 @@ class PushHandler {
       longDistance = (_longitude - location["long"]).abs();
 
       nearBy = (latDistance <= distance) && (longDistance <= distance);
-      if (nearBy && alreadyNearBy) {
+      if (nearBy && _alreadyNearBy) {
         return;
       }
       // If user is close enough to a location but has not previously been close enough to that location
-      print("Nearby: $nearBy alreadyNearby: $alreadyNearBy");
-      if (nearBy && !alreadyNearBy) {
-        this.alreadyNearBy = true;
+      if (nearBy && !_alreadyNearBy) {
+        this._alreadyNearBy = true;
         atAnyLocation = true;
         _locationData = location;
         showNotification(location); // Send the push notification
@@ -71,7 +71,7 @@ class PushHandler {
       }
     }
     if (!atAnyLocation && !nearBy) {
-      alreadyNearBy = false;
+      _alreadyNearBy = false;
     }
   }
 }

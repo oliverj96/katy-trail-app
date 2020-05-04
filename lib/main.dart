@@ -36,9 +36,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> { 
-  static var locationData = Locations().data;
-  static BookmarkHandler _bmHandler = BookmarkHandler();
-  static PushHandler _pushHandler = PushHandler(locationData);
+  static var _locationData = Locations().data;
+  static var _bmHandler = BookmarkHandler();
+  static var _pushHandler = PushHandler(_locationData);
+  final PageStorageBucket bucket = PageStorageBucket();
+  Widget currentScreen = HomePage(_locationData, _bmHandler, _pushHandler);
 
   @override
   void initState() {
@@ -60,8 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => new ExplorePage(_pushHandler.locationData)));
   }
 
-  Widget currentScreen = HomePage(locationData, _bmHandler, _pushHandler);
-  final PageStorageBucket bucket = PageStorageBucket();
 
   Widget build(BuildContext context) {
     // Check user's current location every 2 seconds
