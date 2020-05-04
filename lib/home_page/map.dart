@@ -3,6 +3,11 @@ import 'package:katy_trail_app/push_handler.dart';
 import '../map_page/maps.dart';
 import '../bookmark_page/bm_handler.dart';
 
+/*
+ * MapW is the home page card that navigates to the maps page when tapped. 
+ * It shows an icon, a title, and a description. 
+ */
+
 class MapW extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import '../location_page/location_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
+/*
+ * Explore is the home page card that navigates to the explore page when tapped. 
+ * It shows an icon, a title, and a description. 
+ */
+
 class Explore extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;

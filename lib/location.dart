@@ -1,5 +1,5 @@
-/* This is the database 
-  New locations will be added from here and old locations will also be managed here
+/* This is the database. 
+  New locations will be added from here and old locations will also be managed here.
   If you would like to add a new location please copy the following:
   {
     "name": "LOCATION NAME ",

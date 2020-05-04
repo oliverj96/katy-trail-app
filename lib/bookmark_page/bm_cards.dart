@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import '../location_page/explore_page.dart';
 import './bm_handler.dart';
 
+/*
+ * BMCard is the template for each bookmarked location, which includes: 
+ * a location image, name, and a short description.
+ */
+
 class BMCard extends StatelessWidget {
   final Map<String, Object> locDetails;
   final BookmarkHandler bmHandler;
@@ -11,7 +16,6 @@ class BMCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // child: child,
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.min,

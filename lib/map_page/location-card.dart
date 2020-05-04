@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import '../location_page/explore_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
+/*
+ * LocationCard handles the location cards that pop up in the maps page. 
+ * It creates a white card with a location's image, a title, and a description.  
+ * Each card shows blue texts that say "Learn" and "Bookmark". 
+ * Tapping "Learn" navigates to a location's page, and tapping "Bookmark" 
+ * adds a location to the bookmark page and replaces the text with "Remove". 
+ * Tapping "Remove" removes a location from the bookmark page and replaces
+ * the text with "Bookmark"
+ */
+
 class LocationCard extends StatefulWidget {
   final Map<String, Object> locDetails;
   final List<Map<String, Object>> data;
@@ -40,11 +50,10 @@ class _LocationCardState extends State<LocationCard> {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
+              Navigator.push(context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ExplorePage(widget.locDetails)),
+                  builder: (context) => ExplorePage(widget.locDetails)
+                ),
               );
             },
             child: Row(
@@ -87,11 +96,10 @@ class _LocationCardState extends State<LocationCard> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
+                      Navigator.push(context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                ExplorePage(widget.locDetails)),
+                          builder: (context) => ExplorePage(widget.locDetails)
+                        ),
                       );
                     },
                     child: Padding(

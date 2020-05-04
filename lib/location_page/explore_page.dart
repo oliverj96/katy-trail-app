@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/*
+ * ExplorePage shows a single location with a short description, 
+ * image/s, a long description, and an image citation/s. 
+ */
+
 class ExplorePage extends StatelessWidget {
   final Map<String, Object> locDetails;
   const ExplorePage(this.locDetails);

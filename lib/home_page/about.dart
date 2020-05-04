@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:katy_trail_app/bookmark_page/bm_handler.dart';
 import '../about_page/about_page.dart';
 
+/*
+ * About is the home page card that navigates to the about page when tapped. 
+ * It shows an icon, a title, and a description. 
+ */
+
 class About extends StatelessWidget {
 
   final BookmarkHandler bmHandler;

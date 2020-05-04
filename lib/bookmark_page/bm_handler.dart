@@ -4,12 +4,12 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-class BookmarkHandler {
-  /*
-   * This clas is to be initialized in the main file and passed 
-   * to other widgets where needed (such as add to bookmark)
-   */
+/*
+ * BookmarkHandler is initialized in the main file. 
+ * It is passed to widgets when needed to add and remove bookmarks.  
+ */
 
+class BookmarkHandler {
   static Future<File> ffile;
   static File jsonFile;
   var bmData = List<Map<String, Object>>();
@@ -21,7 +21,6 @@ class BookmarkHandler {
 
   void initializeBM() async {
     var file = await ffile;
-
     print(file);
   }
 
@@ -40,6 +39,7 @@ class BookmarkHandler {
     return await rootBundle.loadString(path);
   }
 
+  // Return true or false if a location is already bookmarked 
   bool isBookmarked(Map<String, Object> loc) {
     for (var location in bmData) {
       if (location["name"] == loc["name"]){
@@ -49,6 +49,7 @@ class BookmarkHandler {
     return false;
   }
 
+  // Add a location to the bookmarks page 
   void addBookmark(Map<String, Object> loc) async {
     // convert loc to json
     var jsonData = json.encode(loc);
@@ -58,15 +59,12 @@ class BookmarkHandler {
     bmData.add(loc);
   }
 
-
-
+  // Remove a location from the bookmarks page
   void removeBookmark(Map<String, Object> loc) {
     bmData.remove(loc);
   }
 
   List<Map<String, Object>> getBookmarks() {
-    // initializeJson();
     return bmData;
-    // return bmData;
   }
 }

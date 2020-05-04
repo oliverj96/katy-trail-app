@@ -1,6 +1,12 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+/*
+ * PushHandler is used for handling flutter local push notifications.
+ * It is used in the main function for showing notifications
+ * and checking for a user's distance from each location.
+ */
+
 class PushHandler {
   final List<Map<String, Object>> dataPointsCol;
   PushHandler(this.dataPointsCol);
@@ -19,7 +25,7 @@ class PushHandler {
     return _locationData;
   }
 
-  // Get the user's longitude and latitude positions
+  // Get the user's longitude and latitude current positions
   Future getPosition() async {
     Position position;
     try {
@@ -51,9 +57,9 @@ class PushHandler {
     var longDistance = 0.0;
     var atAnyLocation = false;
     var nearBy = false;
+    // Go through all the points in the database coming in ["lat"] ["long"]
     for (var location in dataPointsCol) {
-      // Go through all the points in the database coming in ["lat"] ["long"]
-
+     
       latDistance = (_latitude - location["lat"]).abs();
       longDistance = (_longitude - location["long"]).abs();
 

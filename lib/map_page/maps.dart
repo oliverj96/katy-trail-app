@@ -6,6 +6,13 @@ import './location-card.dart';
 import '../bookmark_page/bm_handler.dart';
 import '../push_handler.dart';
 
+/*
+ * MapPage loads a static Mapbox map centered on the Katy Trail. 
+ * It adds a red marker for every location and shows a location card
+ * for a specific location when the marker is tapped.
+ * Pan boundaries allow the user to zoom in and out on the map. 
+ */
+
 class MapPage extends StatefulWidget {
   final List<Map<String, Object>> dataPointsCol;
   final BookmarkHandler bmHandler;
@@ -38,7 +45,6 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     _showLocationCard(context, Map<String, Object> locData) {
       showModalBottomSheet(
         context: context,
