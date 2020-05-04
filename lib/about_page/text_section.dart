@@ -9,7 +9,7 @@ class TextSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.only(right: 20, left: 20, bottom: 20),
+        margin: EdgeInsets.only(right: 20, left: 20, bottom: 15),
         child: Column(
           children: <Widget>[
             Text(
