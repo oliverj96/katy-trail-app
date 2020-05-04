@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static BookmarkHandler _bmHandler = BookmarkHandler();
   static PushHandler _pushHandler = PushHandler(locationData);
 
+  // Initialize local flutter notification plugin 
   @override
   void initState() {
     super.initState();
@@ -54,17 +55,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Handle location page navigation for when a user taps on a push notification
   Future onSelectNotification(String payload) async {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => new ExplorePage(_pushHandler.locationData)));
+    Navigator.push(context,
+      MaterialPageRoute(
+        builder: (context) => new ExplorePage(_pushHandler.locationData)
+      )
+    );
   }
 
   Widget currentScreen = HomePage(locationData, _bmHandler, _pushHandler);
   final PageStorageBucket bucket = PageStorageBucket();
 
   Widget build(BuildContext context) {
-    // Check user's current location every 2 seconds
+    // Check user's current location and distance from any location every 2 seconds
     Timer.periodic(Duration(seconds: 2), (timer) {
       _pushHandler.getPosition();
       _pushHandler.checkDistance();

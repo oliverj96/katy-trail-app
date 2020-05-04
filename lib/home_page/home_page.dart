@@ -6,6 +6,12 @@ import './explore.dart';
 import './about.dart';
 import '../bookmark_page/bm_handler.dart';
 
+/*
+ * HomePage shows all the Map, Explore, and About page option cards in a column.  
+ * Each card navigates to the associated page when tapped. 
+ * The bookmark icon shows on the title bar and navigates to the bookmarks page when tapped. 
+ */
+
 class HomePage extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;

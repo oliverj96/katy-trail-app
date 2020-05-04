@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import './bm_cards.dart';
 import './bm_handler.dart';
 
+/*
+ * Bookmarks shows a list of all bookmarked location cards. 
+ * Each location card includes an image, a name, and a short description. 
+ */
+
 class Bookmarks extends StatefulWidget {
   final BookmarkHandler bmHandler;
   Bookmarks(this.bmHandler);
@@ -16,7 +21,8 @@ class _BookmarksState extends State<Bookmarks> {
 
   _BookmarksState(this.bmHandler);
 
-  void bmChange(Map<String, Object> location){
+  // TODO bmChange 
+  void bmChange(Map<String, Object> location) {
     setState(() {
       bmHandler.removeBookmark(location);
       bmList = bmHandler.getBookmarks();

@@ -3,7 +3,11 @@ import 'package:katy_trail_app/bookmark_page/bm_handler.dart';
 import 'package:katy_trail_app/bookmark_page/bookmarks.dart';
 import './text_section.dart';
 import './title_section.dart';
-import './about_image.dart';
+
+/*
+ * AboutPage shows a title, Katy Trail image, text section, 
+ * a Magnificent Missouri logo, and Lindenwood University logo.
+ */
 
 class AboutPage extends StatelessWidget {
   final BookmarkHandler bmHandler;
@@ -32,7 +36,7 @@ class AboutPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             TitleSection(),
-            AboutImage(),
+            Image.asset('assets/images/katy_trail.png', scale: 2.0),
             TextSection(),
             Image.asset('assets/images/Missouri.png', scale: 2.0, width: 40.0, height: 40.0),
             Image.asset('assets/images/LUlogo.png', scale: 2.0, width: 52.0, height: 52.0),

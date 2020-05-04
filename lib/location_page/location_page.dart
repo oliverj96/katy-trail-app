@@ -3,6 +3,11 @@ import './location_list_cards.dart';
 import '../bookmark_page/bm_handler.dart';
 import '../bookmark_page/bookmarks.dart';
 
+/*
+ * LocationPage creates each location card and shows it in a list.
+ * The user can scroll up and down on this page to see all location cards. 
+ */
+
 class LocationPage extends StatelessWidget {
   final List<Map<String, Object>> data;
   final BookmarkHandler bmHandler;
@@ -23,7 +28,7 @@ class LocationPage extends StatelessWidget {
               Icons.bookmark,
               color: Colors.white,
             ),
-            onPressed: (){
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => new Bookmarks(bmHandler)),

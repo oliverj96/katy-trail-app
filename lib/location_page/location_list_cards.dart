@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import './explore_page.dart';
 import '../bookmark_page/bm_handler.dart';
 
+/*
+ * LocationListCard is the template for location card design to use in the explore page. 
+ * It gives the ability to add and remove bookmarks from the bookmark page. 
+ */
+
+
 class LocationListCard extends StatefulWidget {
   final Map<String, Object> locDetails;
   final BookmarkHandler bmHandler;
@@ -13,12 +19,14 @@ class LocationListCard extends StatefulWidget {
 
 class _LocationListCardState extends State<LocationListCard> {
 
+  // Add a location to the bookmark page 
   void addBM(){
     setState(() {
       widget.bmHandler.addBookmark(widget.locDetails);
     });
   }
 
+  // Remove a location from the bookmark page 
   void removeBM(){
     setState(() {
       widget.bmHandler.removeBookmark(widget.locDetails);
@@ -31,7 +39,7 @@ class _LocationListCardState extends State<LocationListCard> {
     if (widget.bmHandler.isBookmarked(widget.locDetails)) {
       bmButton = FlatButton(
         child: const Text('Remove'),
-        onPressed: (){
+        onPressed: () {
           // Remove from bookmark
           removeBM();
         },
@@ -40,7 +48,7 @@ class _LocationListCardState extends State<LocationListCard> {
     else {
       bmButton = FlatButton(
         child: const Text('Bookmark'),
-        onPressed: (){
+        onPressed: () {
           // Add to bookmark
           addBM();
         },
