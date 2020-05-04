@@ -21,7 +21,7 @@ class _BookmarksState extends State<Bookmarks> {
 
   _BookmarksState(this.bmHandler);
 
-  // TODO bmChange 
+  // Listen to state change for bookmark updates
   void bmChange(Map<String, Object> location) {
     setState(() {
       bmHandler.removeBookmark(location);
