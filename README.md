@@ -52,8 +52,6 @@ In the root directory of the repository.
 - Geolocator
 - Push notifications
 - Maps integration
-- Portrait mode lock
-- Fast-loading screens
 - Android and iOS compatibility 
 - Simple design and color scheme
 
