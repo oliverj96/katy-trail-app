@@ -22,7 +22,7 @@ To test the app on Android, you must also install the Android SDK and Android St
 
 > Note: If your computer is using a Ryzen AMD processor and you wish to use an emulator, you must download the Beta version of Android Studio instead which can be found [here](https://developer.android.com/studio/preview).
 
-If you wish to test the app on iOS, you'll need to install Xcode from the App Store.
+If you wish to test the app on iOS, you'll need to install Xcode from the App Store or from Apple Developer portal.
 
 ### Installing
 
@@ -45,8 +45,27 @@ flutter run
 ```
 In the root directory of the repository.
 
-## Deployment
+## Build for Deployment
 
+Here are the instructions to build the app for each platform for deployment.
+
+### Android
+
+1. Open the "android" folder (under the repo root directory) as a project in Android Studio.
+2. On the menu bar, click Build > Generate Signed Bundle / APK
+3. Select APK and click Next
+> If you are creating the app bundle to upload to Google Play store, select Android App Bundle instead
+4. Specify a key store path
+> If you do not have one, generate a new one, and keep note of the credentials you use
+5. Make sure credentials are filled out, then click Next
+6. Under Build Variants, select "release" then click Finish
+
+The App should be saved under ../katy_trail_app/android/app/release/app.aab
+
+### iOS
+
+1. Open Runner.xcodeproj (under the repo root directory) as a project in XCode.
+2. 
 
 ## Key Features
 
@@ -94,6 +113,7 @@ There is also a bookmark icon on the blue title bar in the upper-right hand corn
 - Tapping "Remove" removes the location data from the bookmarks page so the location card disappears
 
 ## Known Issues
+
 - [ ] Tapping on a notification will push the learn page twice, causing the user having to hit back twice.
 - [ ] Bookmarks are not saved once the app is terminated.
 
@@ -106,6 +126,7 @@ Icons on Home Page:
 - "Bookbag Icon." FlatIcon, Freepik, www.flaticon.com/.
 
 ## Authors
+
 - **Oliver Johnson** - Lead Programmer
 - **Anna George** - Programmer
 - **Anna Rodrigues** - UI Designer
