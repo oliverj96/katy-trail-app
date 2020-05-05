@@ -58,7 +58,7 @@ Here are the instructions to build the app for each platform for deployment.
 4. Specify a key store path
 > If you do not have one, generate a new one, and keep note of the credentials you use
 5. Make sure credentials are filled out, then click Next
-6. Under Build Variants, select "release" then click Finish
+6. Under Build Variants, select "release" and check the box "V2 (Full APK Signature)"then click Finish
 
 The App should be saved under ../katy_trail_app/android/app/release/app.aab
 
