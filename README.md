@@ -60,7 +60,7 @@ Here are the instructions to build the app for each platform for deployment.
 5. Make sure credentials are filled out, then click Next
 6. Under Build Variants, select "release" and check the box "V2 (Full APK Signature)"then click Finish
 
-The App should be saved under ../katy_trail_app/android/app/release/app.aab
+The App should be saved under ../katy_trail_app/android/app/release/app-release.apk
 
 ### iOS
 
