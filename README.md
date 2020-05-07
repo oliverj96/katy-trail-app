@@ -67,7 +67,8 @@ The App should be saved under ../katy_trail_app/android/app/release/app-release.
 1. Open the "ios" folder (under the repo root directory) as a project in Xcode
 > Once your project is open, verify that your Apple Developer account is linked to Xcode
 2. On the menu bar, select Product > Destination > Generic iOS device. Wait for the build to complete
-3. On the menu bar, select Product > Scheme, and make sure the last option is checked
+3. On the menu bar, select Product > Scheme, and make sure the project name is checked
+> By default, it's called "Runner", but this could be changed by the admin/programmer
 4. On the menu bar, select Product > Archive 
 5. On the new window select the project you want then distribute app 
 6. From there, you can select one of the four options that will better suit your needs
