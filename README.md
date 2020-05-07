@@ -39,7 +39,9 @@ flutter pub get
 
 ## Running the tests
 
-To run the Flutter app, execute:
+To run the Flutter app, first ensure that you have either the emulator/simulator running, or a compatible device connected.
+> You can check that flutter is recognizing a device by running `flutter devices`
+Then run the following command:
 ```
 flutter run
 ```
