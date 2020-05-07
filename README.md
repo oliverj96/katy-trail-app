@@ -143,4 +143,4 @@ Icons on Home Page:
 - **Nirali Patel** - Database Developer
 - **Fredo Derazin** - Project Manager
 
-Developed on MacOS and Windows using Visual Studio Code, XCode, and Android Studio.
+Developed on MacOS and Windows using Visual Studio Code, Xcode, and Android Studio.
