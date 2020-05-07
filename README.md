@@ -58,23 +58,20 @@ Here are the instructions to build the app for each platform for deployment.
 4. Specify a key store path
 > If you do not have one, generate a new one, and keep note of the credentials you use
 5. Make sure credentials are filled out, then click Next
-6. Under Build Variants, select "release" and check the box "V2 (Full APK Signature)"then click Finish
+6. Under Build Variants, select "release" and check the box "V2 (Full APK Signature)" then click Finish
 
 The App should be saved under ../katy_trail_app/android/app/release/app-release.apk
 
 ### iOS
 
-1 - Open Xcode and select the open folder: 
-	a. select the folder that contains the application
-	b. inside that folder select the iOS folder
-2 - After your iOS folder is open, make sure your developer account is linked to Xcode 
-3 - On the top of the screen select Product > destination > generic iOS device
-4 - On the top of the screen select Product > scheme > make sure the last option is checked
-5 - Product > Archive 
-6 - On the new window select the project you want > distribute app 
-7 - From there you select one of the four options that will better suit your needs 
-8 - Follow through the other selecting options until you hit the last one which will be to 
-	select where to save the files
+1. Open the "ios" folder (under the repo root directory) as a project in Xcode.
+> Once your project is open, verify that your Apple Developer account is linked to Xcode.
+3. On the menu bar, select Product > Destination > Generic iOS device. Wait for the build to complete.
+4. On the menu bar, select Product > Scheme, and make sure the last option is checked.
+5. On the menu bar, select Product > Archive 
+6. On the new window select the project you want then distribute app 
+7. From there, you can select one of the four options that will better suit your needs
+8. Follow the on screen options. The last option will allow you to specify the save location for the build file.
 
 ## Key Features
 
