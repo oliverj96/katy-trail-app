@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:katy_trail_app/push_handler.dart';
 import '../map_page/maps.dart';
+import '../bookmark_page/bm_handler.dart';
+
+/*
+ * MapW is the home page card that navigates to the maps page when tapped. 
+ * It shows an icon, a title, and a description. 
+ */
 
 class MapW extends StatelessWidget {
-  const MapW({Key key}) : super(key: key);
+  final List<Map<String, Object>> data;
+  final BookmarkHandler bmHandler;
+  final PushHandler pushHandler;
+  const MapW(this.data, this.bmHandler, this.pushHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +22,16 @@ class MapW extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
               onTap: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MapPage()),
+                  MaterialPageRoute(builder: (context) => MapPage(data, bmHandler, pushHandler)),
                 );
               },
               leading: Container(
                 height: 100,
-                child: Image.asset('assets/images/map.png', height: 100, width: 100),
+                child: Image.asset('assets/images/map.png', height: 100, width: 80),
               ),
               //leading: 
               title: Text('Map'),
@@ -30,6 +40,7 @@ class MapW extends StatelessWidget {
           ],
         )
       ),
+      margin: EdgeInsets.only(top: 8.0, left: 5.0, right: 5.0),
     );
   }
 }

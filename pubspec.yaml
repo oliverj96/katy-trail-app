@@ -25,6 +25,10 @@ dependencies:
   google_maps_util:
   google_map_polyutil: ^1.0.0
   flutter_launcher_name: ^0.0.1
+  firebase_core: ^0.4.4+3
+  flutter_local_notifications: ^1.4.0
+  path_provider: ^1.6.5
+  location_permissions: ^2.0.5
   
   # iOS Icons and Fonts
   cupertino_icons: ^0.1.2
@@ -44,22 +48,30 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  assets:     
-    - assets/images/katy_trail.jpg
-    - assets/docs/path.txt 
-    - assets/images/about.png
-    - assets/images/explore.png
+  assets:
+  # Icons and Graphics
     - assets/images/map.png
+    - assets/images/explore.png
+    - assets/images/about.png
     - assets/images/location.png
-    - assets/docs/path.txt
-    # - assets/icon/icon.png //this is for adding the app's icon
+    - assets/images/noimage.png
+  # General Photographs
+    - assets/images/katy_trail.png
+  # Location Images
+    - assets/images/FCapital1.png
+    - assets/images/FCapital2.png
+    - assets/images/Augusta.png
+    - assets/images/MKT.png
+    - assets/images/PilotGrove.png
+    - assets/images/LUlogo.png
+    - assets/images/Missouri.png
+  # Cropped Images
+    - assets/images/cropped/Augusta_cropped.jpg
+    - assets/images/cropped/FCapital_cropped.jpg
+    - assets/images/cropped/MKT_cropped.jpg
+    - assets/images/cropped/Pilotgrove_cropped.jpg
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
+ 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

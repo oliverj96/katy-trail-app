@@ -1,44 +1,93 @@
 import 'package:flutter/material.dart';
-import '../location_page/LocationPage.dart';
+import '../location_page/explore_page.dart';
+import '../bookmark_page/bm_handler.dart';
 
-class LocationCard extends StatelessWidget {
-  final String name;
-  final String description;
+/*
+ * LocationCard handles the location cards that pop up in the maps page. 
+ * It creates a white card with a location's image, a title, and a description.  
+ * Each card shows blue texts that say "Learn" and "Bookmark". 
+ * Tapping "Learn" navigates to a location's page, and tapping "Bookmark" 
+ * adds a location to the bookmark page and replaces the text with "Remove". 
+ * Tapping "Remove" removes a location from the bookmark page and replaces
+ * the text with "Bookmark"
+ */
 
-  LocationCard(this.name, this.description);
+class LocationCard extends StatefulWidget {
+  final Map<String, Object> locDetails;
+  final List<Map<String, Object>> data;
+  final BookmarkHandler bmHandler;
+  LocationCard(this.locDetails, this.data, this.bmHandler);
+
+  @override
+  _LocationCardState createState() => _LocationCardState();
+}
+
+class _LocationCardState extends State<LocationCard> {
+  Function bmAction;
 
   @override
   Widget build(BuildContext context) {
+    String bmText;
+    if (widget.bmHandler.isBookmarked(widget.locDetails)) {
+      setState(() {
+        bmText = "Remove";
+        bmAction = () {
+          widget.bmHandler.removeBookmark(widget.locDetails);
+        };
+      });
+    } else {
+      setState(() {
+        bmText = "Bookmark";
+        bmAction = () {
+          widget.bmHandler.addBookmark(widget.locDetails);
+        };
+      });
+    }
     return Container(
-      height: 200,
-      padding: EdgeInsets.fromLTRB(20,20,20,20),
-        child: Column(
+      height: 180,
+      padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+      child: Column(
         children: <Widget>[
           GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => ExplorePage(widget.locDetails)
+                ),
+              );
+            },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/location.png', height: 70, width: 70),
-                Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text("   " + name, 
+                Image.asset(
+                  'assets/images/cropped/${widget.locDetails["croppedImages"]}',
+                  height: 50,
+                  width: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, left: 10.0),
+                  child: Text(
+                    widget.locDetails["name"],
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
               ],
-            ), 
-          ), 
+            ),
+          ),
           GestureDetector(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Padding(padding: const EdgeInsets.only(top: 20.0),
-                  child: Text(description, 
-                    style: TextStyle(fontSize: 16),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    widget.locDetails["description"],
+                    style: TextStyle(color: Colors.grey[700], fontSize: 16),
                   ),
                 ),
               ],
-            ), 
-          ), 
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -46,31 +95,32 @@ class LocationCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LocationPage()),
+                    onTap: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (context) => ExplorePage(widget.locDetails)
+                        ),
                       );
                     },
-                    child: Padding(padding: const EdgeInsets.only(top: 20.0, right: 40.0),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0, right: 40.0),
                       child: Text(
-                        "Explore",
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic), 
+                        "Learn",
+                        style: TextStyle(color: Colors.blue, fontSize: 20),
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(
-                      context,
-                      //TODO will push to BookmarkPage and add location to bookmarks
-                      MaterialPageRoute(builder: (context) => LocationPage()),
-                      );
+                    onTap: () {
+                      setState(() {
+                        bmAction();
+                      });
                     },
-                    child: Padding(padding: const EdgeInsets.only(top: 20.0),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
-                        "Bookmark",
-                        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                        bmText,
+                        style: TextStyle(color: Colors.blue, fontSize: 20),
                       ),
                     ),
                   ),
@@ -78,7 +128,7 @@ class LocationCard extends StatelessWidget {
               ),
             ],
           ),
-        ], 
+        ],
       ),
     );
   }
