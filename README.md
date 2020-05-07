@@ -64,8 +64,17 @@ The App should be saved under ../katy_trail_app/android/app/release/app-release.
 
 ### iOS
 
-1. Open Runner.xcodeproj (under the repo root directory) as a project in XCode.
-2. 
+1 - Open Xcode and select the open folder: 
+	a. select the folder that contains the application
+	b. inside that folder select the iOS folder
+2 - After your iOS folder is open, make sure your developer account is linked to Xcode 
+3 - On the top of the screen select Product > destination > generic iOS device
+4 - On the top of the screen select Product > scheme > make sure the last option is checked
+5 - Product > Archive 
+6 - On the new window select the project you want > distribute app 
+7 - From there you select one of the four options that will better suit your needs 
+8 - Follow through the other selecting options until you hit the last one which will be to 
+	select where to save the files
 
 ## Key Features
 
